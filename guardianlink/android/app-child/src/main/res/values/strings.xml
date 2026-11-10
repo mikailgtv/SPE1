@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">نگهبان‌لینک فرزند</string>
+    <string name="device_admin_description">در دستگاهِ مدیریت‌شده، برای اعمال محدودیت‌های اپ فقط از API رسمی Device Owner اندروید استفاده می‌شود. این وضعیت فقط با راه‌اندازی شفاف Android Enterprise فعال می‌شود.</string>
+</resources>

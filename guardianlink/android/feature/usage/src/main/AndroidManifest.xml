@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ماژول Screen Time / App Usage.
+  کودک: فقط UsageStatsManager (مجوز خاص PACKAGE_USAGE_STATS در manifest اپ کودک اعلام می‌شود).
+  والد: فقط خواندن گزارش‌ها از سرور.
+  هیچ مسدودسازی/enforcement در این فاز وجود ندارد (فقط monitoring).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" />

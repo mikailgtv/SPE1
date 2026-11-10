@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GuardianLink — Wireframe · Parent App (Phase 1)</title>
+<style>
+:root{
+  --bg:#07090D; --panel:#0E1117; --surface:#12151C; --surface2:#171B24; --surface3:#1E232E;
+  --outline:#272C38; --on:#E6E9EF; --onvar:#A7AEBE; --muted:#7C8496;
+  --primary:#5B7CFA; --primary-c:#1D2750; --onp:#0B1020;
+  --ok:#22C55E; --warn:#F59E0B; --danger:#EF4444; --info:#38BDF8; --neutral:#94A3B8;
+  --r-card:20px; --r-btn:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--on);font-family:"Vazirmatn","Segoe UI",Tahoma,system-ui,sans-serif;font-size:14px;line-height:1.6;padding:28px 20px 80px}
+.page-head{max-width:1500px;margin:0 auto 26px;border:1px solid var(--outline);border-radius:22px;background:linear-gradient(180deg,#0E1117,#0A0C11);padding:24px 26px}
+.page-head h1{font-size:24px;font-weight:800;letter-spacing:-.2px}
+.page-head p{color:var(--onvar);margin-top:8px;max-width:900px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--outline);background:var(--surface2);color:var(--onvar)}
+.badge.p1{color:#BFD0FF;border-color:#2A3A75;background:#141C3A}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.legend span{font-size:12px;color:var(--onvar);display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--outline);padding:5px 10px;border-radius:999px}
+.dot{width:9px;height:9px;border-radius:50%}
+.grid{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.frame-wrap{display:flex;flex-direction:column;gap:10px}
+.frame-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--onvar)}
+.frame-title b{color:var(--on);font-size:14px}
+.frame-title .n{width:22px;height:22px;border-radius:7px;background:var(--primary);color:var(--onp);font-size:11px;display:grid;place-items:center;font-weight:800}
+.note{font-size:11.5px;color:var(--muted);background:var(--panel);border:1px dashed var(--outline);border-radius:12px;padding:8px 10px}
+/* PHONE */
+.phone{width:320px;height:660px;background:var(--surface);border:1px solid var(--outline);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 18px 40px -20px #000}
+.statusbar{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:var(--onvar);background:var(--surface);flex:none}
+.statusbar .right{display:flex;gap:6px;align-items:center}
+.topbar{padding:10px 16px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex:none}
+.topbar h2{font-size:17px;font-weight:800}
+.topbar .sub{font-size:11px;color:var(--muted);font-weight:500}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--primary-c);border:1px solid #2C3B78;display:grid;place-items:center;font-size:14px}
+.iconbtn{width:34px;height:34px;border-radius:11px;background:var(--surface2);border:1px solid var(--outline);display:grid;place-items:center;color:var(--onvar);font-size:15px}
+.body{flex:1;overflow:hidden;padding:0 14px 12px;display:flex;flex-direction:column;gap:11px}
+.card{background:var(--surface2);border:1px solid var(--outline);border-radius:var(--r-card);padding:14px}
+.card.hero{background:linear-gradient(150deg,#1A2138 0%,#151A24 45%,#12151C 100%);border-color:#2A3040}
+.row{display:flex;align-items:center;gap:8px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.title{font-size:13px;font-weight:800;color:var(--on)}
+.small{font-size:11px;color:var(--muted)}
+.label{font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.2px}
+.chip{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid var(--outline);background:var(--surface3);color:var(--onvar);display:inline-flex;align-items:center;gap:5px}
+.chip.ok{color:#8FE3AC;border-color:#1F4C33;background:#12261B}
+.chip.warn{color:#FBD08A;border-color:#5A4218;background:#251C0C}
+.chip.danger{color:#FBA9A9;border-color:#5C2222;background:#2A1414}
+.chip.off{color:#B7BECB;border-color:#333A48;background:#1A1E27}
+.chip.info{color:#A5DCFA;border-color:#1E4763;background:#0F2231}
+.btn{border-radius:var(--r-btn);padding:10px 14px;font-weight:800;font-size:12.5px;text-align:center;border:1px solid transparent}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.ghost{background:var(--surface3);border-color:var(--outline);color:var(--on)}
+.btn.danger{background:#3A1A1A;border-color:#6B2A2A;color:#FCA5A5}
+.btn.sm{padding:7px 10px;font-size:11.5px;border-radius:11px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tile{background:var(--surface2);border:1px solid var(--outline);border-radius:16px;padding:11px 6px;text-align:center;position:relative}
+.tile .ic{font-size:19px;display:block;margin-bottom:4px}
+.tile .lb{font-size:10.5px;font-weight:700;color:var(--onvar)}
+.soon{position:absolute;top:5px;left:5px;font-size:8px;font-weight:800;color:#0B1020;background:var(--warn);border-radius:5px;padding:1px 4px}
+.divider{height:1px;background:var(--outline);margin:2px 0}
+.kv{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;padding:5px 0;border-bottom:1px dashed #20263250}
+.kv:last-child{border-bottom:0}
+.kv .k{color:var(--muted)}
+.kv .v{color:var(--on);font-weight:600;text-align:left;direction:ltr;font-size:11px}
+.bignumber{font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1}
+.progress{height:8px;border-radius:99px;background:var(--surface3);overflow:hidden}
+.progress i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),#8FA3FF)}
+.bottombar{flex:none;height:60px;border-top:1px solid var(--outline);background:var(--surface);display:flex;align-items:center;justify-content:space-around;padding:0 6px}
+.nav{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--muted);font-weight:700;width:64px}
+.nav .ic{font-size:18px}
+.nav.active{color:var(--primary)}
+.nav.active .ic{filter:drop-shadow(0 0 8px #5B7CFA66)}
+.banner{border-radius:14px;padding:9px 12px;font-size:11.5px;font-weight:700;display:flex;gap:8px;align-items:center}
+.banner.warn{background:#251C0C;border:1px solid #5A4218;color:#FBD08A}
+.banner.info{background:#0F2231;border:1px solid #1E4763;color:#A5DCFA}
+.banner.danger{background:#2A1414;border:1px solid #5C2222;color:#FBA9A9}
+.listrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed #20263250}
+.listrow:last-child{border-bottom:0}
+.perm-ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-size:14px;flex:none}
+.qr{width:150px;height:150px;background:
+ repeating-conic-gradient(#fff 0% 25%, #0b0d12 0% 50%) 0 0/18px 18px;
+ border-radius:12px;margin:0 auto;border:6px solid #fff}
+.codebox{direction:ltr;font-family:ui-monospace,Menlo,monospace;font-size:22px;font-weight:800;letter-spacing:3px;color:#fff;text-align:center}
+.ring{width:66px;height:66px;border-radius:50%;background:conic-gradient(var(--warn) 0 78%, #2A2F3B 78% 100%);display:grid;place-items:center;margin:0 auto}
+.ring i{width:52px;height:52px;border-radius:50%;background:var(--surface2);display:grid;place-items:center;font-size:12px;font-weight:800;font-style:normal}
+.field{background:var(--surface3);border:1px solid var(--outline);border-radius:13px;padding:9px 12px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.field.filled{color:var(--on)}
+.field.err{border-color:#6B2A2A}
+.hold{height:46px;border-radius:14px;background:#2A1414;border:1px solid #6B2A2A;position:relative;overflow:hidden;display:grid;place-items:center;font-weight:800;font-size:12.5px;color:#FCA5A5}
+.hold i{position:absolute;inset:0;width:62%;background:#4A1F1F}
+.hold span{position:relative}
+.stepper{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted)}
+.stepper b{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--surface3);border:1px solid var(--outline);font-size:9px}
+.stepper b.done{background:var(--ok);border-color:var(--ok);color:#05230F}
+.stepper b.now{background:var(--primary);border-color:var(--primary);color:#fff}
+.skel{background:linear-gradient(90deg,#1A1F29,#232936,#1A1F29);border-radius:8px;height:12px}
+.toast{position:absolute;left:14px;right:14px;bottom:74px;background:#1A2030;border:1px solid #33405E;border-radius:14px;padding:10px 12px;font-size:11.5px;display:flex;gap:8px;align-items:center;box-shadow:0 12px 30px -12px #000}
+.sec-title{font-size:12px;font-weight:800;color:var(--onvar);margin-top:2px}
+hr.soft{border:0;border-top:1px solid var(--outline);margin:6px 0}
+.foot{max-width:1500px;margin:34px auto 0;color:var(--muted);font-size:12px;border-top:1px solid var(--outline);padding-top:16px}
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="row between" style="align-items:flex-start">
+    <div>
+      <h1>🟦 Parent App — Wireframe (Phase 1)</h1>
+      <p>ده صفحه‌ی اصلی اپ والد در Phase 1 · Material 3 · Dark theme (پیش‌فرض) · RTL فارسی · همه متن‌ها از <code>strings.xml</code> می‌آیند. این وایرفریم «ساختار و سلسله‌مراتب» را نشان می‌دهد؛ جزئیات بصری نهایی در پیاده‌سازی Compose تنظیم می‌شود.</p>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+      <span class="badge p1">Phase 1</span><span class="badge">fa-IR · RTL</span><span class="badge">Material 3</span>
+    </div>
+  </div>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--ok)"></i> Online / Granted</span>
+    <span><i class="dot" style="background:var(--warn)"></i> Stale / مجوز لازم</span>
+    <span><i class="dot" style="background:var(--danger)"></i> Offline / خطر</span>
+    <span><i class="dot" style="background:var(--neutral)"></i> غیرفعال / به‌زودی</span>
+    <span>⏱ ⚡ داده‌ها واقعی‌اند (نه fake) — ساختار آماده برای Phase 2+</span>
+  </div>
+</header>
+
+<main class="grid">
+
+<!-- 1 SPLASH -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">1</span><b>Splash / Auth Gate</b><span class="badge">route: splash</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۱</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="body" style="justify-content:center;align-items:center;gap:16px;padding-bottom:60px">
+      <div style="width:78px;height:78px;border-radius:24px;background:linear-gradient(150deg,#5B7CFA,#2A3F9E);display:grid;place-items:center;font-size:34px;box-shadow:0 14px 40px -14px #5B7CFA">🛡️</div>
+      <div style="text-align:center">
+        <div style="font-size:22px;font-weight:800">GuardianLink</div>
+        <div class="small">مدیریت و مراقبت والد از دستگاه فرزند</div>
+      </div>
+      <div class="skel" style="width:110px;height:3px;border-radius:99px"></div>
+      <div class="small" style="color:var(--muted)">۰٫۱٫۰ · در حال بررسی نشست…</div>
+    </div>
+  </div>
+  <div class="note">اگر session معتبر باشد ⇒ مستقیم به Dashboard؛ در غیر این صورت ⇒ Onboarding/Login. هیچ داده‌ای قبل از auth نمایش داده نمی‌شود.</div>
+</div>
+
+<!-- 2 ONBOARDING -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">2</span><b>Onboarding</b><span class="badge">۳ اسلاید + ساخت خانواده</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۱</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="body" style="gap:14px">
+      <div class="between"><span class="small">۱ از ۳</span><span class="small" style="color:var(--primary)">رد کردن</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;text-align:center">
+        <div style="font-size:56px">👨‍👩‍👧</div>
+        <div style="font-size:20px;font-weight:800;line-height:1.5">یک خانواده، یک نگاه روشن</div>
+        <div class="small" style="max-width:250px;margin:0 auto">وضعیت دستگاه فرزندتان را ببینید: آنلاین بودن، باتری، و سلامت دسترسی‌ها.</div>
+      </div>
+      <div class="row" style="justify-content:center;gap:6px"><i class="dot" style="background:var(--primary);width:18px;border-radius:99px"></i><i class="dot" style="background:var(--outline)"></i><i class="dot" style="background:var(--outline)"></i></div>
+      <div class="btn primary">بعدی</div>
+    </div>
+  </div>
+  <div class="note">اسلاید ۳ ⇒ ساخت Family (نام خانواده + timezone). سپس Register.</div>
+</div>
+
+<!-- 3 LOGIN -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">3</span><b>Login / Register</b><span class="badge">feature:auth</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۱</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>ورود والد</h2><div class="sub">به خانواده خود متصل شوید</div></div><div class="iconbtn">↩</div></div>
+    <div class="body" style="gap:10px">
+      <div>
+        <div class="label" style="margin-bottom:5px">ایمیل</div>
+        <div class="field filled"><span style="direction:ltr">parent1@test.local</span><span>✉️</span></div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:5px">رمز عبور</div>
+        <div class="field filled"><span style="direction:ltr;letter-spacing:2px">••••••••••</span><span>👁</span></div>
+        <div class="small" style="margin-top:4px;color:var(--ok)">حداقل ۱۰ کاراکتر ✔</div>
+      </div>
+      <div class="banner danger" style="display:none">⚠ رمز عبور اشتباه است</div>
+      <div class="btn primary" style="margin-top:6px">ورود</div>
+      <div class="between"><span class="small" style="color:var(--primary)">رمز را فراموش کرده‌اید؟</span><span class="small" style="color:var(--primary)">ساخت حساب جدید</span></div>
+      <hr class="soft">
+      <div class="card" style="padding:11px">
+        <div class="row between"><span class="label">🔐 امنیت</span><span class="chip ok">TLS + Pinning</span></div>
+        <div class="small" style="margin-top:6px">رمز با Argon2id ذخیره می‌شود. بعد از ۱۰ تلاش ناموفق، حساب ۱۵ دقیقه قفل می‌شود.</div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="row between"><span class="label">🖥 سرور (فقط Dev)</span><span class="chip info" style="direction:ltr">192.168.1.20:8080</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="note">حالت‌ها: Loading (دکمه spinner) · Error (banner با `request_id`) · Offline (banner «آفلاین هستید») · Account Locked (شمارش معکوس).</div>
+</div>
+
+<!-- 4 DASHBOARD ONLINE -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">4</span><b>Dashboard — Online</b><span class="badge">صفحه اصلی</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۱</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar">
+      <div><h2>خانواده رضایی</h2><div class="sub">۱ دستگاه متصل · به‌روزرسانی زنده فعال</div></div>
+      <div class="row" style="gap:6px"><div class="iconbtn">🔔</div><div class="avatar">👩</div></div>
+    </div>
+    <div class="body" style="gap:10px">
+      <div class="card hero">
+        <div class="between">
+          <div class="row" style="gap:9px">
+            <div style="width:38px;height:38px;border-radius:13px;background:#1D2750;display:grid;place-items:center;font-size:18px;border:1px solid #2C3B78">⭐</div>
+            <div><div style="font-weight:800;font-size:14px">سارا</div><div class="small">گوشی سارا · Pixel 8</div></div>
+          </div>
+          <span class="chip ok"><i class="dot" style="background:var(--ok)"></i> آنلاین</span>
+        </div>
+        <div class="grid4" style="margin-top:12px;gap:6px">
+          <div class="tile" style="padding:9px 4px"><span class="ic">🔋</span><span class="lb" style="color:var(--ok);font-size:13px;font-weight:800">۷۴٪</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🔄</span><span class="lb">۲ دقیقه</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">📶</span><span class="lb">Wi-Fi</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🛡</span><span class="lb" style="color:var(--warn)">۲/۵</span></div>
+        </div>
+        <div class="divider" style="margin:11px 0"></div>
+        <div class="row between">
+          <div class="small">📍 مکان: <span style="color:var(--neutral)">غیرفعال</span> · ⏱ زمان: <span style="color:var(--neutral)">Phase 2</span></div>
+          <span class="chip" style="border-color:#2C3B78;color:#BFD0FF">جزئیات ←</span>
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px">
+        <div class="between"><span class="title">فعالیت امروز</span><span class="small">۶۵٪ از حد مجاز</span></div>
+        <div class="progress" style="margin-top:9px"><i style="width:65%"></i></div>
+        <div class="row between" style="margin-top:8px"><span class="small">۲س ۱۸د استفاده</span><span class="chip off">⏱ در Phase 2 فعال می‌شود</span></div>
+      </div>
+
+      <div>
+        <div class="sec-title" style="margin-bottom:8px">دسترسی سریع</div>
+        <div class="grid4">
+          <div class="tile"><span class="soon">P4</span><span class="ic">📍</span><span class="lb">مکان</span></div>
+          <div class="tile"><span class="soon">P3</span><span class="ic">⏱</span><span class="lb">زمان</span></div>
+          <div class="tile"><span class="soon">P6</span><span class="ic">📱</span><span class="lb">برنامه‌ها</span></div>
+          <div class="tile"><span class="soon">P5</span><span class="ic">🏠</span><span class="lb">Geofence</span></div>
+          <div class="tile"><span class="ic">🚨</span><span class="lb">هشدارها</span></div>
+          <div class="tile"><span class="ic">⚙️</span><span class="lb">تنظیمات</span></div>
+          <div class="tile" style="border-color:#2C3B78;background:#141C3A"><span class="ic">➕</span><span class="lb" style="color:#BFD0FF">افزودن</span></div>
+          <div class="tile"><span class="ic">🛡</span><span class="lb">حفاظت</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px">
+        <div class="between" style="margin-bottom:6px"><span class="title">Recent Events</span><span class="small" style="color:var(--primary)">همه ←</span></div>
+        <div class="listrow"><span style="color:var(--warn)">🔋</span><span class="small" style="flex:1">Battery Low — گوشی سارا</span><span class="small">۱۲ دقیقه</span></div>
+        <div class="listrow"><span style="color:var(--info)">📍</span><span class="small" style="flex:1">Location Event — دقت ۱۲m</span><span class="small">۲۵ دقیقه</span></div>
+        <div class="listrow"><span style="color:var(--info)">🛡</span><span class="small" style="flex:1">Permission Changed — location غیرفعال شد</span><span class="small">۱ ساعت</span></div>
+        <div class="listrow"><span style="color:var(--danger)">🚨</span><span class="small" style="flex:1">Tamper Attempt — Device Admin غیرفعال شد</span><span class="small">۲ ساعت</span></div>
+      </div>
+    </div>
+    <div class="bottombar">
+      <div class="nav active"><span class="ic">🏠</span>خانه</div>
+      <div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div>
+      <div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">منبع داده: <code>GET /v1/devices</code> + <code>snapshot</code> و به‌روزرسانی زنده از SSE (<code>device.online</code>, <code>battery.updated</code>). Pull-to-refresh فعال.</div>
+</div>
+
+<!-- 5 DASHBOARD OFFLINE -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">5</span><b>Dashboard — Offline (Test 6)</b><span class="badge">UiState.Offline</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۳</span><span class="right">✈️ 🔋 ۸۱٪</span></div>
+    <div class="topbar">
+      <div><h2>خانواده رضایی</h2><div class="sub">به‌روزرسانی زنده: قطع</div></div>
+      <div class="row" style="gap:6px"><div class="iconbtn">🔔</div><div class="avatar">👩</div></div>
+    </div>
+    <div class="body" style="gap:10px">
+      <div class="banner danger">🔴 اتصال دستگاه قطع شد — ۲ دقیقه پیش <span style="margin-inline-start:auto;font-size:10px">grace_expired</span></div>
+      <div class="banner warn">✈️ اینترنت گوشی <b>شما</b> هم قطع است — داده‌های زیر از کش است</div>
+      <div class="card hero">
+        <div class="between">
+          <div class="row" style="gap:9px">
+            <div style="width:38px;height:38px;border-radius:13px;background:#2A1414;display:grid;place-items:center;font-size:18px;border:1px solid #5C2222">⭐</div>
+            <div><div style="font-weight:800;font-size:14px">سارا</div><div class="small">آخرین اتصال: ۱۲:۴۱</div></div>
+          </div>
+          <span class="chip danger"><i class="dot" style="background:var(--danger)"></i> آفلاین</span>
+        </div>
+        <div class="grid4" style="margin-top:12px;gap:6px">
+          <div class="tile" style="padding:9px 4px"><span class="ic">🔋</span><span class="lb" style="font-size:13px;font-weight:800">۷۴٪ <span class="chip off" style="font-size:8px;padding:1px 4px">قدیمی</span></span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🔄</span><span class="lb">۲ دقیقه</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">📵</span><span class="lb">نامشخص</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🛡</span><span class="lb" style="color:var(--warn)">۲/۵</span></div>
+        </div>
+        <div class="divider" style="margin:11px 0"></div>
+        <div class="row between"><span class="small">مکان آخرین: <span style="color:var(--neutral)">در دسترس نیست</span></span><span class="chip off">تلاش دوباره ⟳</span></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="between"><span class="title">رویدادهای اخیر</span><span class="small">Timeline</span></div>
+        <div class="listrow"><span style="color:var(--danger)">🔴</span><span class="small" style="flex:1">آفلاین شد (قطع اینترنت دستگاه)</span><span class="small">۱۲:۴۳</span></div>
+        <div class="listrow"><span style="color:var(--ok)">🔋</span><span class="small" style="flex:1">باتری ۷۴٪ · در حال تخلیه</span><span class="small">۱۲:۴۱</span></div>
+        <div class="listrow"><span style="color:var(--ok)">🟢</span><span class="small" style="flex:1">آنلاین شد</span><span class="small">۱۲:۳۰</span></div>
+        <div class="listrow"><span style="color:var(--info)">🔗</span><span class="small" style="flex:1">دستگاه با موفقیت pair شد</span><span class="small">۱۲:۳۵</span></div>
+      </div>
+      <div class="btn ghost">⟳ به‌روزرسانی دستی</div>
+    </div>
+    <div class="bottombar">
+      <div class="nav active"><span class="ic">🏠</span>خانه</div><div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">هیچ crash، هیچ صفحه سفید. باتری **حذف نمی‌شود** بلکه با badge «قدیمی» نشان داده می‌شود (صداقت داده).</div>
+</div>
+
+<!-- 6 EMPTY -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">6</span><b>Dashboard — Empty (Test 1)</b><span class="badge">UiState.Empty</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۳۶</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>خانواده رضایی</h2><div class="sub">۰ دستگاه متصل</div></div><div class="avatar">👩</div></div>
+    <div class="body" style="justify-content:center;align-items:center;text-align:center;gap:14px;padding-bottom:40px">
+      <div style="font-size:54px">📱</div>
+      <div style="font-size:16px;font-weight:800">هنوز دستگاهی متصل نکرده‌اید</div>
+      <div class="small" style="max-width:240px">اپ GuardianLink را روی گوشی فرزند نصب کنید و با یک کد ۸ رقمی، دستگاه را به خانواده اضافه کنید.</div>
+      <div class="card" style="text-align:right;width:100%;padding:12px">
+        <div class="label" style="margin-bottom:8px">مراحل</div>
+        <div class="stepper"><b class="done">✓</b><span style="flex:1">ساخت حساب والد</span></div>
+        <div class="stepper" style="margin-top:6px"><b class="now">۲</b><span style="flex:1">نصب اپ روی گوشی فرزند</span></div>
+        <div class="stepper" style="margin-top:6px"><b>۳</b><span style="flex:1">Pairing با QR یا کد</span></div>
+      </div>
+      <div class="btn primary" style="width:100%">➕ افزودن دستگاه فرزند</div>
+      <div class="small">راهنمای نصب ←</div>
+    </div>
+    <div class="bottombar">
+      <div class="nav active"><span class="ic">🏠</span>خانه</div><div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">Empty ≠ Error. این حالت فقط وقتی است که list خالی و درخواست موفق بوده.</div>
+</div>
+
+<!-- 7 PAIRING -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">7</span><b>Pairing (Test 3)</b><span class="badge">feature:pairing</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۳۷</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>افزودن دستگاه فرزند</h2><div class="sub">کد تا ۱۰ دقیقه معتبر است</div></div><div class="iconbtn">✕</div></div>
+    <div class="body" style="gap:12px">
+      <div class="card" style="padding:11px">
+        <div class="between">
+          <div class="row" style="gap:8px"><span style="font-size:20px">⭐</span><div><div style="font-weight:800;font-size:12.5px">سارا</div><div class="small">پروفایل فرزند</div></div></div>
+          <span class="chip">تغییر ✎</span>
+        </div>
+      </div>
+      <div class="card" style="text-align:center;padding:16px">
+        <div class="qr"></div>
+        <div style="margin-top:12px" class="label">یا کد را در اپ فرزند وارد کنید</div>
+        <div class="codebox" style="margin-top:6px">7QK4 - M2XP</div>
+        <div class="row" style="justify-content:center;gap:8px;margin-top:10px">
+          <span class="btn ghost sm">📋 کپی</span><span class="btn ghost sm">↗ اشتراک</span>
+        </div>
+        <div class="row" style="justify-content:center;align-items:center;gap:10px;margin-top:14px">
+          <div class="ring"><i>۰۷:۴۲</i></div>
+        </div>
+        <div class="small" style="margin-top:6px;color:var(--warn)">تا انقضا ۷ دقیقه و ۴۲ ثانیه</div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="label" style="margin-bottom:8px">وضعیت زنده (SSE)</div>
+        <div class="stepper"><b class="done">✓</b><span style="flex:1">کد ساخته شد</span><span class="small">۱۲:۳۷</span></div>
+        <div class="stepper" style="margin-top:7px"><b class="now">…</b><span style="flex:1">در انتظار اسکن توسط فرزند</span></div>
+        <div class="stepper" style="margin-top:7px"><b>۳</b><span style="flex:1">تأیید رضایت توسط فرزند</span></div>
+        <div class="stepper" style="margin-top:7px"><b>۴</b><span style="flex:1">اتصال کامل</span></div>
+      </div>
+      <div class="row" style="gap:8px">
+        <div class="btn ghost" style="flex:1">کد جدید</div>
+        <div class="btn ghost" style="flex:1">ورود دستی کودک</div>
+      </div>
+    </div>
+  </div>
+  <div class="note">بعد از redeem (بدون refresh): «دستگاه Pixel 8 پیدا شد ✓» → بعد از confirm: انیمیشن تیک + «رفتن به داشبورد». حالت‌های خطا: منقضی / اشتباه (با attempts_left) / سقف دستگاه.</div>
+</div>
+
+<!-- 8 DEVICE LIST -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">8</span><b>Device List</b><span class="badge">feature:devices</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۲</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>دستگاه‌ها</h2><div class="sub">خانواده رضایی · حداکثر ۱۰</div></div><div class="iconbtn">➕</div></div>
+    <div class="body" style="gap:10px">
+      <div class="card">
+        <div class="between">
+          <div class="row" style="gap:9px">
+            <div style="width:36px;height:36px;border-radius:12px;background:#1D2750;display:grid;place-items:center;font-size:17px">⭐</div>
+            <div><div style="font-weight:800;font-size:13px">سارا — گوشی سارا</div><div class="small">Pixel 8 · Android 16 · v0.1.0</div></div>
+          </div>
+          <span class="chip ok">🟢 آنلاین</span>
+        </div>
+        <div class="divider" style="margin:10px 0"></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap">
+          <span class="chip">🔋 ۷۴٪</span><span class="chip">🔄 ۱۲:۴۱</span><span class="chip warn">🛡 ۲/۵ مجوز</span><span class="chip off">📍 —</span>
+        </div>
+      </div>
+      <div class="card" style="opacity:.62">
+        <div class="between">
+          <div class="row" style="gap:9px">
+            <div style="width:36px;height:36px;border-radius:12px;background:#2A1414;display:grid;place-items:center;font-size:17px">🚀</div>
+            <div><div style="font-weight:800;font-size:13px">تبلت سارا</div><div class="small">آخرین اتصال: دیروز ۲۱:۰۳</div></div>
+          </div>
+          <span class="chip danger">🔴 آفلاین</span>
+        </div>
+        <div class="divider" style="margin:10px 0"></div>
+        <div class="row" style="gap:6px"><span class="chip">🔋 ۱۲٪ <span style="color:var(--danger)">کم</span></span><span class="chip off">داده قدیمی</span></div>
+      </div>
+      <div class="card" style="padding:11px;border-style:dashed">
+        <div class="between"><span class="small">دستگاه حذف‌شده: «گوشی قدیمی» — ۱۲ سپتامبر</span><span class="chip off">بازیابی</span></div>
+      </div>
+      <div class="btn ghost" style="text-align:center">➕ افزودن دستگاه جدید</div>
+    </div>
+    <div class="bottombar">
+      <div class="nav"><span class="ic">🏠</span>خانه</div><div class="nav active"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">Swipe به چپ ⇒ میان‌بر «حذف». مرتب‌سازی: آنلاین‌ها اول.</div>
+</div>
+
+<!-- 9 DEVICE DETAIL -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">9</span><b>Device Detail — وضعیت و اطلاعات</b><span class="badge">Test 4/5/8</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۲</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>گوشی سارا</h2><div class="sub">⭐ سارا · متصل از ۲۸ سپتامبر</div></div><div class="iconbtn">⋮</div></div>
+    <div class="body" style="gap:10px;overflow:hidden">
+      <div class="card" style="padding:12px">
+        <div class="between"><span class="label">وضعیت لحظه‌ای</span><span class="chip ok">🟢 آنلاین از ۱۲:۳۰</span></div>
+        <div class="grid4" style="margin-top:11px;gap:6px">
+          <div class="tile" style="padding:9px 4px"><span class="ic">🔋</span><span class="lb" style="font-size:14px;font-weight:800;color:var(--ok)">۷۴٪</span><span class="small" style="font-size:9px">تخلیه</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🌡</span><span class="lb">۳۱°</span><span class="small" style="font-size:9px">دما</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">📶</span><span class="lb">Wi-Fi</span><span class="small" style="font-size:9px">بدون رومینگ</span></div>
+          <div class="tile" style="padding:9px 4px"><span class="ic">🖥</span><span class="lb">۱۸ GB</span><span class="small" style="font-size:9px">آزاد</span></div>
+        </div>
+        <div class="kv" style="margin-top:8px"><span class="k">آخرین heartbeat</span><span class="v">12:41:22 (18s ago)</span></div>
+        <div class="kv"><span class="k">آخرین sync موفق</span><span class="v">12:41:22</span></div>
+        <div class="kv"><span class="k">lease تا</span><span class="v">12:42:52</span></div>
+        <div class="kv"><span class="k">uptime دستگاه</span><span class="v">3d 9h</span></div>
+        <div class="kv"><span class="k">ریستارت اپ</span><span class="v">0</span></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="between"><span class="label">اطلاعات دستگاه</span><span class="chip info">واقعی</span></div>
+        <div class="kv"><span class="k">مدل / سازنده</span><span class="v">Pixel 8 · Google</span></div>
+        <div class="kv"><span class="k">Android</span><span class="v">16 (SDK 36)</span></div>
+        <div class="kv"><span class="k">نسخه اپ</span><span class="v">0.1.0 (1)</span></div>
+        <div class="kv"><span class="k">Locale / TZ</span><span class="v">fa-IR · Asia/Tehran</span></div>
+        <div class="kv"><span class="k">device_id</span><span class="v">***7b2c</span></div>
+        <div class="kv"><span class="k">Root / Emulator</span><span class="v">خیر / خیر</span></div>
+        <div class="kv"><span class="k">سطح کنترل</span><span class="v">L1 — Assisted</span></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="between"><span class="label">رضایت فرزند (consent v1.0)</span><span class="chip ok">۴ فعال</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap;margin-top:8px">
+          <span class="chip ok">✅ وضعیت آنلاین</span><span class="chip ok">✅ باتری</span>
+          <span class="chip ok">✅ اطلاعات دستگاه</span><span class="chip ok">✅ مجوزها</span>
+          <span class="chip off">⛔ مکان</span><span class="chip off">⛔ زمان استفاده</span>
+        </div>
+        <div class="small" style="margin-top:8px">تأیید شده توسط سارا در ۱۲:۳۵ · لغو و تغییر فقط توسط والد (نمای فرزند فقط‌خواندنی است).</div>
+      </div>
+    </div>
+    <div class="bottombar">
+      <div class="nav"><span class="ic">🏠</span>خانه</div><div class="nav active"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">Tabهای داخلی: «وضعیت» · «مجوزها» (صفحه ۱۰) · «Timeline» · «Sessions». همه از یک <code>snapshot</code> با ETag.</div>
+</div>
+
+<!-- 10 PERMISSIONS -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">10</span><b>Permission Status</b><span class="badge">MVP #9</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۲</span><span class="right">📶 🔋 ۸۲٪</span></div>
+    <div class="topbar"><div><h2>مجوزهای دستگاه</h2><div class="sub">۲ از ۵ مجوز لازم فعال است</div></div><div class="iconbtn">↩</div></div>
+    <div class="body" style="gap:9px">
+      <div class="banner warn">⚠ بدون «دسترسی مصرف»، Screen Time در Phase 2 دقت کمتری دارد</div>
+      <div class="card" style="padding:11px">
+        <div class="listrow"><span class="perm-ic" style="background:#12261B;color:var(--ok)">✅</span><div style="flex:1"><div style="font-weight:700;font-size:12px">اعلان‌ها</div><div class="small">برای هشدارهای والد · API 33+</div></div><span class="chip ok">granted</span></div>
+        <div class="listrow"><span class="perm-ic" style="background:#12261B;color:var(--ok)">✅</span><div style="flex:1"><div style="font-weight:700;font-size:12px">معافیت از بهینه‌سازی باتری</div><div class="small">تا سرویس sync زنده بماند</div></div><span class="chip ok">granted</span></div>
+        <div class="listrow"><span class="perm-ic" style="background:#1A1E27;color:var(--neutral)">⚪</span><div style="flex:1"><div style="font-weight:700;font-size:12px">Device Admin</div><div class="small">اختیاری · تشخیص حذف اپ</div></div><span class="btn sm ghost">فعال‌سازی</span></div>
+        <div class="listrow"><span class="perm-ic" style="background:#251C0C;color:var(--warn)">⚠️</span><div style="flex:1"><div style="font-weight:700;font-size:12px">دسترسی مصرف (Usage Access)</div><div class="small">لازم برای Phase 2 · Special access</div></div><span class="btn sm ghost">تنظیمات</span></div>
+        <div class="listrow"><span class="perm-ic" style="background:#1A1E27;color:var(--neutral)">⚪</span><div style="flex:1"><div style="font-weight:700;font-size:12px">مکان</div><div class="small">در Phase 3 فعال می‌شود</div></div><span class="chip off">not_requested</span></div>
+        <div class="listrow"><span class="perm-ic" style="background:#2A1414;color:var(--danger)">⛔</span><div style="flex:1"><div style="font-weight:700;font-size:12px">Device Owner (L2)</div><div class="small">برای block واقعی و جلوگیری از حذف</div></div><span class="chip danger">unavailable</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">چگونه بخوانیم؟</div>
+        <div class="row" style="gap:6px;font-size:11px"><span class="chip ok">granted</span> فعال است</div>
+        <div class="row" style="gap:6px;font-size:11px;margin-top:5px"><span class="chip warn">denied</span> کاربر رد کرده — راهنما بدهید</div>
+        <div class="row" style="gap:6px;font-size:11px;margin-top:5px"><span class="chip off">not_requested</span> هنوز لازم نشده</div>
+        <div class="row" style="gap:6px;font-size:11px;margin-top:5px"><span class="chip danger">unavailable</span> روی این دستگاه/نسخه ممکن نیست</div>
+      </div>
+      <div class="small">آخرین بررسی: ۱۲:۴۱:۲۲ · هر تغییر ⇒ <code>permission.changed</code> در timeline</div>
+    </div>
+  </div>
+  <div class="note">۱۵ نوع مجوز در schema تعریف شده؛ فقط آن‌هایی که برای Phaseهای فعال لازم‌اند نمایش داده می‌شوند (capability-gated).</div>
+</div>
+
+<!-- 11 REMOVE DEVICE -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">11</span><b>Remove Device (Test 8)</b><span class="badge">hold-to-confirm</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۵</span><span class="right">📶 🔋 ۸۱٪</span></div>
+    <div class="topbar"><div><h2>حذف دستگاه</h2><div class="sub">این اقدام برگشت‌ناپذیر است</div></div><div class="iconbtn">✕</div></div>
+    <div class="body" style="gap:11px">
+      <div class="card" style="padding:12px;border-color:#5C2222">
+        <div class="row" style="gap:9px"><span style="font-size:24px">🗑️</span><div><div style="font-weight:800;font-size:13.5px">حذف «گوشی سارا»</div><div class="small">Pixel 8 · متصل از ۲۸ سپتامبر ۱۲:۳۵</div></div></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="label" style="margin-bottom:8px">چه اتفاقی می‌افتد؟</div>
+        <div class="listrow"><span style="color:var(--danger)">①</span><span class="small" style="flex:1">دسترسی دستگاه فوراً باطل می‌شود (credential + همه نشست‌ها)</span></div>
+        <div class="listrow"><span style="color:var(--danger)">②</span><span class="small" style="flex:1">داده‌های باتری/وضعیت/مجوزها پاک می‌شود</span></div>
+        <div class="listrow"><span style="color:var(--danger)">③</span><span class="small" style="flex:1">فرزند نوتیف «اتصال قطع شد» می‌گیرد و داده محلی پاک می‌شود</span></div>
+        <div class="listrow"><span style="color:var(--warn)">④</span><span class="small" style="flex:1">برای اتصال مجدد، Pairing جدید لازم است</span></div>
+        <div class="listrow"><span style="color:var(--ok)">⑤</span><span class="small" style="flex:1">پروفایل «سارا» در خانواده می‌ماند</span></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="label" style="margin-bottom:8px">دلیل (برای گزارش)</div>
+        <div class="row" style="gap:6px;flex-wrap:wrap">
+          <span class="chip">تعویض گوشی</span><span class="chip off">فروش دستگاه</span><span class="chip off">پایان استفاده</span><span class="chip off">سایر</span>
+        </div>
+        <div class="row" style="gap:6px;margin-top:10px;font-size:11.5px;color:var(--onvar)">
+          <span style="width:16px;height:16px;border-radius:5px;background:var(--primary);display:grid;place-items:center;color:#fff;font-size:10px">✓</span>
+          اطلاع‌رسانی به فرزند قبل از حذف
+        </div>
+      </div>
+      <div class="hold"><i></i><span>نگه دارید تا حذف تأیید شود…</span></div>
+      <div class="btn ghost" style="text-align:center">انصراف</div>
+      <div class="small" style="text-align:center">جایگزین ملایم‌تر: «خروج از نشست» (دستگاه قابل بازگشت است)</div>
+    </div>
+  </div>
+  <div class="note">Hold-to-confirm ۱.۵ ثانیه ⇒ ضد حذف تصادفی. پس از موفقیت: Toast «دستگاه حذف شد» + Undo 5s (فقط در لیست، نه در داده).</div>
+</div>
+
+<!-- 12 SETTINGS -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">12</span><b>Settings</b><span class="badge">feature:settings</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۶</span><span class="right">📶 🔋 ۸۱٪</span></div>
+    <div class="topbar"><div><h2>تنظیمات</h2><div class="sub">مریم · owner_parent</div></div><div class="avatar">👩</div></div>
+    <div class="body" style="gap:9px">
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">حساب و خانواده</div>
+        <div class="kv"><span class="k">👤 حساب</span><span class="v">parent1@test.local</span></div>
+        <div class="kv"><span class="k">👨‍👩‍👧 خانواده</span><span class="v">خانواده رضایی</span></div>
+        <div class="kv"><span class="k">📱 دستگاه‌های فعال</span><span class="v">1 / 10</span></div>
+        <div class="kv"><span class="k">🔑 نشست‌های فعال</span><span class="v">2 دستگاه</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">امنیت</div>
+        <div class="kv"><span class="k">🔒 قفل اپ (بیومتریک)</span><span class="v">خاموش</span></div>
+        <div class="kv"><span class="k">📵 FLAG_SECURE</span><span class="v">روشن</span></div>
+        <div class="kv"><span class="k">↩ خروج از همه دستگاه‌ها</span><span class="v" style="color:var(--danger)">اقدام</span></div>
+        <div class="kv"><span class="k">🧾 گزارش امنیتی (audit)</span><span class="v">۱۲ رویداد</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">اعلان‌ها <span class="chip off" style="font-size:8px">Phase 7</span></div>
+        <div class="kv"><span class="k">🔴 دستگاه آفلاین</span><span class="v">روشن</span></div>
+        <div class="kv"><span class="k">🔋 باتری کم</span><span class="v">روشن</span></div>
+        <div class="kv"><span class="k">🛡 لغو مجوز</span><span class="v">روشن</span></div>
+        <div class="kv"><span class="k">🌙 ساعات سکوت</span><span class="v">23:00–07:00</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">ظاهر و زبان</div>
+        <div class="kv"><span class="k">🌓 تم</span><span class="v">تیره (پیش‌فرض)</span></div>
+        <div class="kv"><span class="k">🌐 زبان</span><span class="v">فارسی (RTL)</span></div>
+        <div class="kv"><span class="k">۱۲ سبک اعداد</span><span class="v">فارسی</span></div>
+      </div>
+      <div class="card" style="padding:11px;border-style:dashed">
+        <div class="label" style="margin-bottom:6px">توسعه‌دهنده (فقط debug)</div>
+        <div class="kv"><span class="k">🖥 Base URL</span><span class="v">192.168.1.20:8080</span></div>
+        <div class="kv"><span class="k">📡 SSE</span><span class="v">متصل · 42 رویداد</span></div>
+        <div class="kv"><span class="k">🧪 Mock mode</span><span class="v">خاموش</span></div>
+        <div class="kv"><span class="k">✈️ Force offline</span><span class="v">خاموش</span></div>
+        <div class="kv"><span class="k">📦 Outbox</span><span class="v">0 در صف</span></div>
+      </div>
+      <div class="btn danger" style="text-align:center">خروج از حساب</div>
+      <div class="small" style="text-align:center">GuardianLink 0.1.0 (1) · Privacy Policy · Terms</div>
+    </div>
+  </div>
+  <div class="note">Dev Menu فقط در buildType=debug با `BuildConfig` gate می‌شود؛ در release کاملاً حذف است.</div>
+</div>
+
+<!-- 13 LOADING / ERROR -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">13</span><b>Loading & Error States</b><span class="badge">StateView</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۴۷</span><span class="right">📶 🔋 ۸۱٪</span></div>
+    <div class="topbar"><div><h2>خانه</h2><div class="sub">در حال بارگذاری…</div></div><div class="avatar">👩</div></div>
+    <div class="body" style="gap:10px">
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:9px">
+        <div class="row" style="gap:9px"><div class="skel" style="width:38px;height:38px;border-radius:13px"></div><div style="flex:1"><div class="skel" style="width:90px"></div><div class="skel" style="width:140px;margin-top:6px;height:9px"></div></div><div class="skel" style="width:58px;height:20px;border-radius:99px"></div></div>
+        <div class="grid4" style="gap:6px"><div class="skel" style="height:46px;border-radius:14px"></div><div class="skel" style="height:46px;border-radius:14px"></div><div class="skel" style="height:46px;border-radius:14px"></div><div class="skel" style="height:46px;border-radius:14px"></div></div>
+        <div class="skel" style="height:9px;width:70%"></div>
+      </div>
+      <div class="label">Skeleton shimmer — نه spinner خالی</div>
+      <hr class="soft">
+      <div class="card" style="padding:16px;text-align:center;border-color:#5C2222">
+        <div style="font-size:38px">📡</div>
+        <div style="font-weight:800;font-size:14px;margin-top:8px">اتصال به سرور برقرار نشد</div>
+        <div class="small" style="margin-top:6px">سرور در دسترس نیست یا آدرس آن در Dev Menu اشتباه است. داده‌های شما روی دستگاه امن است.</div>
+        <div class="btn primary" style="margin-top:12px">⟳ تلاش دوباره</div>
+        <div class="btn ghost" style="margin-top:8px">بررسی تنظیمات سرور</div>
+        <div class="small" style="margin-top:10px;direction:ltr">request_id: 01J8ZK6Q9VX3P2M7</div>
+        <div class="small" style="color:var(--danger)">HTTP 503 · SERVICE_UNAVAILABLE</div>
+      </div>
+      <div class="card" style="padding:12px">
+        <div class="label" style="margin-bottom:6px">قواعد حالت‌ها</div>
+        <div class="small">· Loading: skeleton · Empty: تصویر + CTA<br>· Error: دلیل انسانی + اقدام + request_id<br>· Offline: banner + داده کش‌شده با badge<br>· هرگز صفحه سفید یا crash</div>
+      </div>
+    </div>
+  </div>
+  <div class="note">همه این حالت‌ها با یک کامپوننت <code>StateView</code> رندر می‌شوند ⇒ یک تست، همه صفحه‌ها.</div>
+</div>
+
+<!-- 14 NOTIFICATION SETTINGS -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">14</span><b>Notification Settings</b><span class="badge">Toggle per-type</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۵۰</span><span class="right">📶 🔋 ۸۰٪</span></div>
+    <div class="topbar"><div><h2>تنظیمات هشدارها</h2><div class="sub">آنچه والد دریافت می‌کند — نه فرزند</div></div><div class="iconbtn">↩</div></div>
+    <div class="body" style="gap:9px">
+      <div class="banner ok">🔔 اعلان‌های سیستم اندروید: مجاز · [تنظیمات سیستم]</div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">انواع هشدار</div>
+        <div class="kv"><span class="k">📴 Device Offline</span><span class="v" style="color:var(--ok)">ON · High</span></div>
+        <div class="kv"><span class="k">🔋 Low Battery</span><span class="v" style="color:var(--ok)">ON · Default</span></div>
+        <div class="kv"><span class="k">📍 Location Event</span><span class="v" style="color:var(--ok)">ON · Default</span></div>
+        <div class="kv"><span class="k">🏠 Geofence Event</span><span class="v" style="color:var(--ok)">ON · High</span></div>
+        <div class="kv"><span class="k">⏱ Screen Time Limit</span><span class="v" style="color:var(--ok)">ON · High</span></div>
+        <div class="kv"><span class="k">🛡 Permission Changed</span><span class="v" style="color:var(--ok)">ON · Default</span></div>
+        <div class="kv"><span class="k">🚨 Tamper Attempt</span><span class="v" style="color:var(--danger)">ON · High</span></div>
+        <div class="kv"><span class="k">🆘 SOS</span><span class="v" style="color:var(--danger)">ON 🔒 · Max + full-screen</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="label" style="margin-bottom:6px">قواعد</div>
+        <div class="kv"><span class="k">🌙 ساعات سکوت</span><span class="v">23:00–07:00 · ON</span></div>
+        <div class="kv"><span class="k">↳ استثنا</span><span class="v">SOS, Tamper</span></div>
+        <div class="kv"><span class="k">⚖️ حداقل اهمیت</span><span class="v">Warning به بالا</span></div>
+        <div class="kv"><span class="k">📬 خلاصه هفتگی</span><span class="v" style="color:var(--neutral)">OFF</span></div>
+      </div>
+      <div class="btn ghost" style="text-align:center">🔔 ارسال نوتیف آزمایشی</div>
+      <div class="small" style="text-align:center">تنظیمات بین همه دستگاه‌های والد sync می‌شود · double-gate (سرور + کلاینت)</div>
+      <div class="card" style="padding:10px;border-style:dashed">
+        <div class="small">🔕 اپ فرزند به‌هیچ‌وجه نوتیفیکیشن نمی‌سازد؛ این صفحه فقط دریافت‌های <b style="color:var(--on)">والد</b> را کنترل می‌کند.</div>
+      </div>
+    </div>
+    <div class="bottombar">
+      <div class="nav"><span class="ic">🏠</span>خانه</div><div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav active"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">هر ردیف = یک Android Channel با اهمیت مستقل. SOS حداقل High و قفل‌شده (ایمنی). جزئیات فنی: سند ۱۲.</div>
+</div>
+
+<!-- 15 TAMPER EVENTS -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">15</span><b>Tamper Events</b><span class="badge">[TAMPER]</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۵۱</span><span class="right">📶 🔋 ۸۰٪</span></div>
+    <div class="topbar"><div><h2>رویدادهای حفاظتی</h2><div class="sub">۲ رویداد جدید</div></div><div class="iconbtn">↩</div></div>
+    <div class="body" style="gap:9px">
+      <div class="tabs" style="display:flex;background:var(--surface2);border:1px solid var(--outline);border-radius:14px;padding:3px;gap:3px">
+        <span class="chip danger" style="flex:1;justify-content:center">new (2)</span>
+        <span class="chip" style="flex:1;justify-content:center">ack</span>
+        <span class="chip" style="flex:1;justify-content:center">critical</span>
+        <span class="chip off" style="flex:1;justify-content:center">همه</span>
+      </div>
+      <div class="card" style="padding:12px;border-color:#5C2222">
+        <div class="between"><span class="chip danger">critical · new</span><span class="small">۱۲:۴۴</span></div>
+        <div style="font-weight:800;font-size:13px;margin-top:8px">protection.removed</div>
+        <div class="small">دستگاه: گوشی سارا · سطح حفاظت: M1</div>
+        <div class="small" style="margin-top:6px">Device Admin غیرفعال شد — معمولاً قدم اول برای حذف اپ است.</div>
+        <div class="kv" style="margin-top:6px"><span class="k">evidence</span><span class="v">{source:'admin_receiver'}</span></div>
+        <div class="row" style="gap:6px;margin-top:8px"><span class="btn sm ghost">تأیید (ack)</span><span class="btn sm ghost">بررسی دستگاه</span></div>
+      </div>
+      <div class="card" style="padding:12px;border-color:#5A4218">
+        <div class="between"><span class="chip warn">warning · new</span><span class="small">۱۱:۰۲</span></div>
+        <div style="font-weight:800;font-size:13px;margin-top:8px">permission.changed</div>
+        <div class="small">دستگاه: گوشی سارا · location: granted → denied</div>
+        <div class="small" style="margin-top:6px">مجوز مکان بدون هماهنگی غیرفعال شد؛ گزارش‌های مکان متوقف است.</div>
+        <div class="row" style="gap:6px;margin-top:8px"><span class="btn sm ghost">تأیید (ack)</span><span class="btn sm ghost">راهنمای بازگردانی</span></div>
+      </div>
+      <div class="card" style="padding:11px">
+        <div class="between"><span class="chip off">info · resolved</span><span class="small">دیروز</span></div>
+        <div class="small" style="margin-top:6px">time.tampered — ساعت دستگاه ۴۰ دقیقه جلو رفت؛ محاسبات با زمان سرور انجام شد.</div>
+      </div>
+      <div class="small">هر رویداد: event_type · timestamp (سرور) · device · status (+severity, evidence redacted)</div>
+    </div>
+    <div class="bottombar">
+      <div class="nav"><span class="ic">🏠</span>خانه</div><div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav active"><span class="ic">🚨</span>هشدارها</div><div class="nav"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">منبع: `tamper_events` + SSE `tamper.detected` + نوتیف (اگر toggle روشن باشد). چرخه status: new → ack → resolved/false_alarm.</div>
+</div>
+
+<!-- 16 AUDIT LOG -->
+<div class="frame-wrap">
+  <div class="frame-title"><span class="n">16</span><b>Audit Log</b><span class="badge">ممیزی</span></div>
+  <div class="phone">
+    <div class="statusbar"><span>۱۲:۵۲</span><span class="right">📶 🔋 ۸۰٪</span></div>
+    <div class="topbar"><div><h2>Audit Log</h2><div class="sub">۳۰ روز اخیر · immutable</div></div><div class="iconbtn">↧</div></div>
+    <div class="body" style="gap:8px">
+      <div class="row" style="gap:6px"><span class="chip">همه دسته‌ها ▾</span><span class="chip">۷ روز ▾</span><span class="chip off">export JSON</span></div>
+      <div class="card" style="padding:10px">
+        <div class="kv"><span class="k">[AUTH]</span><span class="v">auth.login · success · 12:41</span></div>
+        <div class="kv"><span class="k">[PAIRING]</span><span class="v">pairing.redeemed · success · 12:35</span></div>
+        <div class="kv"><span class="k">[PAIRING]</span><span class="v">pairing.confirmed · success · 12:35</span></div>
+        <div class="kv"><span class="k" style="color:var(--danger)">[TAMPER]</span><span class="v">protection.removed · failure · 12:44</span></div>
+        <div class="kv"><span class="k" style="color:var(--danger)">[SECURITY]</span><span class="v">signature_mismatch · failure · 12:40</span></div>
+        <div class="kv"><span class="k">[DEVICE]</span><span class="v">device.snapshot · success · 12:41</span></div>
+        <div class="kv"><span class="k">[PRIVACY]</span><span class="v">consent.granted · success · 12:35</span></div>
+        <div class="kv"><span class="k">[NOTIFICATION]</span><span class="v">prefs.updated · success · 12:50</span></div>
+      </div>
+      <div class="card" style="padding:10px">
+        <div class="label" style="margin-bottom:6px">جزئیات ردیف انتخاب‌شده</div>
+        <div class="kv"><span class="k">actor</span><span class="v">child_device:***7b2c</span></div>
+        <div class="kv"><span class="k">action</span><span class="v">protection.removed</span></div>
+        <div class="kv"><span class="k">result</span><span class="v" style="color:var(--danger)">failure</span></div>
+        <div class="kv"><span class="k">metadata</span><span class="v">{redacted}</span></div>
+        <div class="kv"><span class="k">request_id</span><span class="v">01J8ZK6Q9V…</span></div>
+      </div>
+      <div class="small">هیچ password/token/مختصات دقیقی در audit ذخیره نمی‌شود (Redactor + validator سمت سرور).</div>
+    </div>
+    <div class="bottombar">
+      <div class="nav"><span class="ic">🏠</span>خانه</div><div class="nav"><span class="ic">📱</span>دستگاه‌ها</div>
+      <div class="nav"><span class="ic">🚨</span>هشدارها</div><div class="nav active"><span class="ic">⚙️</span>تنظیمات</div>
+    </div>
+  </div>
+  <div class="note">خواندنی برای والد (شفافیت)، نوشتنی فقط توسط سرور. نگهداری ۳۶۵ روز.</div>
+</div>
+
+</main>
+
+<div class="foot">
+  <b>🖼 فایل همراه:</b> Child App wireframes در <code>wireframes/child-app.html</code> · دیاگرام‌های فنی در <code>docs/diagrams/</code><br>
+  <b>🎨 توکن‌ها:</b> primary <code>#5B7CFA</code> · success <code>#22C55E</code> · warning <code>#F59E0B</code> · danger <code>#EF4444</code> · surface <code>#12151C</code> · radius 20dp · spacing 4/8/12/16 · Vazirmatn + Inter<br>
+  <b>📌 نکته:</b> این فایل کاملاً self-contained است (بدون فونت/CDN خارجی) و در پیش‌نمایش هم درست دیده می‌شود.
+</div>
+</body>
+</html>

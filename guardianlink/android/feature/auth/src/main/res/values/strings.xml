@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_title">یک خانواده، یک نگاه روشن</string>
+    <string name="auth_subtitle">مدیریت و مراقبت والد از دستگاه فرزند</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمز عبور</string>
+    <string name="sign_in">ورود</string>
+    <string name="create_account">ساخت حساب</string>
+    <string name="need_account">حساب ندارید؟ بسازید</string>
+    <string name="have_account">حساب دارید؟ وارد شوید</string>
+    <string name="err_email_format">فرمت ایمیل نامعتبر است.</string>
+    <string name="err_password_short">رمز عبور باید ۱۲ تا ۱۲۸ کاراکتر باشد.</string>
+    <string name="family_title">ساخت خانواده</string>
+    <string name="family_subtitle">یک نام برای خانواده خود انتخاب کنید.</string>
+    <string name="family_name">نام خانواده</string>
+    <string name="create_family">ساخت خانواده</string>
+    <string name="err_family_name">نام خانواده نامعتبر است.</string>
+</resources>

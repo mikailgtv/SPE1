@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Loading…</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="st_card_title">Screen Time</string>
+    <string name="st_today_usage">Today\'s usage</string>
+    <string name="st_limit">Daily limit: %1$s</string>
+    <string name="st_remaining">Remaining: %1$s</string>
+    <string name="st_usage_access_off">Usage Access: Disabled</string>
+    <string name="st_open">Screen Time details</string>
+    <string name="st_title">Screen Time</string>
+    <string name="st_today">Today</string>
+    <string name="st_top_apps">Most used apps</string>
+    <string name="st_week">Week</string>
+    <string name="st_week_total">Week total: %1$s</string>
+    <string name="st_week_avg">Daily average: %1$s</string>
+    <string name="st_most_day">Most used day: %1$s</string>
+    <string name="st_least_day">Least used day: %1$s</string>
+    <string name="st_daily_limit">Daily limit</string>
+    <string name="st_limit_value">%1$s per day</string>
+    <string name="st_limit_off">Daily limit is disabled</string>
+    <string name="st_schedules">Schedules</string>
+    <string name="st_no_schedules">No schedule defined yet.</string>
+    <string name="st_advisory_note">Schedules are advisory only in this version; no app gets blocked.</string>
+    <string name="st_open_apps">App Usage</string>
+    <string name="st_open_reports">Reports</string>
+    <string name="st_open_settings">Screen Time Settings</string>
+    <string name="st_state_under">Under limit</string>
+    <string name="st_state_near">Near limit</string>
+    <string name="st_state_reached">Limit reached</string>
+
+    <string name="au_title">App Usage</string>
+    <string name="au_total">Today total: %1$s</string>
+    <string name="sort_most">Most used</string>
+    <string name="sort_least">Least used</string>
+    <string name="sort_alpha">Alphabetical</string>
+    <string name="au_empty">Nothing to show yet. Enable “Usage Access” in the child app first.</string>
+
+    <string name="ad_title">App Details</string>
+    <string name="ad_today">Today</string>
+    <string name="ad_today_launches">Launches (today)</string>
+    <string name="ad_week">Week total</string>
+    <string name="ad_week_launches">Launches (week)</string>
+    <string name="ad_last_used">Last used</string>
+    <string name="ad_trend">Weekly trend</string>
+
+    <string name="cat_game">Game</string>
+    <string name="cat_audio">Audio</string>
+    <string name="cat_video">Video</string>
+    <string name="cat_image">Image</string>
+    <string name="cat_social">Social</string>
+    <string name="cat_news">News</string>
+    <string name="cat_maps">Maps</string>
+    <string name="cat_productivity">Productivity</string>
+    <string name="cat_accessibility">Accessibility</string>
+    <string name="cat_undefined">Uncategorized</string>
+
+    <string name="rp_title">Reports</string>
+    <string name="rp_daily">Daily report %1$s</string>
+    <string name="rp_total">Total usage</string>
+    <string name="rp_most_used">Most used app</string>
+    <string name="rp_apps_used">Apps used</string>
+    <string name="rp_sessions">Sessions</string>
+    <string name="rp_categories">Categories (from device system)</string>
+    <string name="rp_weekly">Weekly report</string>
+    <string name="rp_week_total">Week total</string>
+    <string name="rp_week_avg">Daily average</string>
+    <string name="rp_most_day">Most used day</string>
+    <string name="rp_least_day">Least used day</string>
+
+    <string name="set_title">Screen Time Settings</string>
+    <string name="set_limit_block">Daily usage limit</string>
+    <string name="set_limit_minutes">Daily limit (minutes)</string>
+    <string name="set_near_pct">“Near limit” alert threshold (%)</string>
+    <string name="set_limit_enabled">Enabled</string>
+    <string name="set_save_limit">Save</string>
+    <string name="set_saved">Saved ✓</string>
+    <string name="set_monitoring_note">Reaching the limit only alerts the parent; the child phone is never locked or blocked.</string>
+    <string name="set_schedules">Schedules</string>
+    <string name="set_add_schedule">Add</string>
+    <string name="set_edit">Edit</string>
+    <string name="set_sched_name">Name (e.g. School Days)</string>
+    <string name="set_sched_start">Start (HH:MM)</string>
+    <string name="set_sched_end">End (HH:MM)</string>
+    <string name="set_sched_days">Days of week</string>
+    <string name="set_bad_time">Time must be valid HH:MM</string>
+    <string name="set_overnight_hint">Overnight ranges are allowed (e.g. 22:30 to 07:00).</string>
+</resources>

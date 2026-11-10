@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="child_home_title">Connection status</string>
+    <string name="child_family">Family: %1$s</string>
+    <string name="child_device">Device: %1$s</string>
+    <string name="child_last_sync">Last sync: %1$s</string>
+    <string name="child_never">not yet</string>
+    <string name="child_zero_notif">This app creates no notifications at all; reports are sent silently in the background.</string>
+    <string name="child_sync_now">Sync now</string>
+    <string name="child_battery">Battery</string>
+    <string name="child_app_version">App version</string>
+    <string name="child_disconnected_title">Disconnected</string>
+    <string name="child_disconnected_text">The connection of this device was cut by the parent. Talk to your parent to reconnect.</string>
+    <string name="child_usage_access">Usage Access</string>
+    <string name="child_usage_on">🟢 Granted</string>
+    <string name="child_usage_off">🔴 Not Granted</string>
+    <string name="child_usage_text">Screen Time reports and app rules need Android's official Usage Access, which you enable in Settings. This feature reports usage statistics and basic metadata for installed apps (such as name and version); app content is not part of the reported data. Android or distribution-policy limits may make the app list incomplete. In Normal mode, limits are advisory alerts and apps are not blocked.</string>
+    <string name="child_app_rules_title">App rule status</string>
+    <string name="child_app_mode_normal">Normal Android mode: restrictions are reports/alerts only and apps are not blocked. Blocking is possible only on a device genuinely provisioned as Device Owner through Android Enterprise.</string>
+    <string name="child_app_mode_managed">Managed Device Owner mode detected. Restriction rules use official Android APIs; Android may reject restrictions for some essential apps.</string>
+    <string name="child_app_cached_rules">Encrypted cached rules</string>
+    <string name="child_app_last_sync">Last rules sync</string>
+    <string name="child_app_schedule_delay">Local schedules use WorkManager and system scheduling; exact or real-time execution is not guaranteed.</string>
+    <string name="child_usage_open">Open official settings</string>
+    <string name="child_sos_button">Emergency SOS help request</string>
+    <string name="child_web_title">Web safety</string>
+    <string name="child_web_managed_status">Managed Chrome status</string>
+    <string name="child_web_scope">Domain rules can apply only in Chrome on a managed device/profile; this does not filter the internet or other apps. Browsing history and visit attempts are not collected.</string>
+    <string name="child_web_status_disabled">Off</string>
+    <string name="child_web_status_unsupported">Not applicable</string>
+    <string name="child_web_status_unverified">Chrome settings sent and read back; final effect unverified</string>
+    <string name="child_web_status_limited">Limited</string>
+    <string name="child_web_status_error">Configuration error</string>
+    <string name="child_web_status_unknown">Unknown</string>
+    <string name="child_web_reason_disabled">The parent has turned web safety off.</string>
+    <string name="child_web_reason_managed_required">Applying this policy requires official device/profile management.</string>
+    <string name="child_web_reason_chrome_missing">Chrome is not installed on this device.</string>
+    <string name="child_web_reason_readback_mismatch">Android could not read the policy back after configuration.</string>
+    <string name="child_web_reason_effect_unverified">Android read back Chrome settings, but the app cannot verify their actual effect inside Chrome.</string>
+    <string name="child_web_reason_category_unavailable">Category rules are saved, but no web classifier is configured, so these rules are not enforced.</string>
+    <string name="child_web_reason_vpn_unavailable">VPN filtering is not implemented in this version.</string>
+    <string name="child_web_reason_dns_unavailable">DNS filtering and a classification provider are not configured in this version.</string>
+    <string name="child_web_reason_policy_rejected">Android rejected the managed policy request.</string>
+    <string name="child_web_reason_default">Only rule configuration and reported status are provided; no web browsing history.</string>
+</resources>

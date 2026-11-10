@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="presence_online">آنلاین</string>
+    <string name="presence_offline">آفلاین</string>
+    <string name="presence_warning">هشدار</string>
+    <string name="err_network">خطای شبکه؛ اتصال دستگاه را بررسی کنید.</string>
+    <string name="err_auth">ایمیل یا رمز عبور نامعتبر است.</string>
+    <string name="err_session">نشست شما منقضی شده است؛ دوباره وارد شوید.</string>
+    <string name="err_server">خطای سرور؛ دوباره تلاش کنید.</string>
+    <string name="err_pairing_invalid">کد pairing معتبر نیست.</string>
+    <string name="err_pairing_expired">کد pairing منقضی شده است.</string>
+    <string name="err_pairing_used">این کد قبلاً استفاده شده است.</string>
+    <string name="err_device_connected">این دستگاه قبلاً به یک خانواده متصل است.</string>
+    <string name="err_device_removed">دستگاه توسط والد حذف شده است.</string>
+    <string name="err_rate">تعداد تلاش‌ها زیاد است؛ کمی صبر کنید.</string>
+    <string name="err_permission">دسترسی مجاز نیست.</string>
+    <string name="health_healthy">سالم</string>
+    <string name="health_delayed">با تأخیر</string>
+    <string name="health_offline">آفلاین</string>
+    <string name="health_unknown">در انتظار نخستین sync</string>
+</resources>

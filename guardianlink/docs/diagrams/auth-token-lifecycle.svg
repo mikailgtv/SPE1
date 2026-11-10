@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960" font-family="Vazirmatn, Tahoma, Segoe UI, sans-serif" direction="rtl">
+  <defs>
+    <marker id="db" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#5B7CFA"/></marker>
+    <marker id="dg" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2DD4A7"/></marker>
+    <marker id="dr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#EF4444"/></marker>
+  </defs>
+
+  <rect width="1400" height="960" fill="#0B0D12"/>
+  <text x="1360" y="40" text-anchor="end" font-size="24" font-weight="800" fill="#E6E9EF">Authentication &amp; Session Lifecycle</text>
+  <text x="1360" y="64" text-anchor="end" font-size="13" fill="#A7AEBE">والد: JWT کوتاه‌عمر + Refresh چرخشی با Reuse Detection · فرزند: Device Credential با امضای HMAC هر درخواست (بدون انقضا، با Revocation آنی)</text>
+
+  <!-- ================= LEFT: PARENT ================= -->
+  <rect x="40" y="86" width="630" height="34" rx="10" fill="#141C3A"/>
+  <text x="650" y="109" text-anchor="end" font-size="14" font-weight="800" fill="#BFD0FF">🟦 مسیر والد (Parent App)</text>
+
+  <rect x="40" y="136" width="630" height="72" rx="14" fill="#111726" stroke="#2A3A75"/>
+  <text x="650" y="162" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۱) ورود: POST /v1/auth/login {email, password, device_fingerprint}</text>
+  <text x="650" y="184" text-anchor="end" font-size="11.5" fill="#A7AEBE">سرور: rate limit 5/min/IP → Argon2id verify → failed_login_count → lockout 15m بعد از ۱۰ خطا</text>
+  <text x="650" y="200" text-anchor="end" font-size="11" fill="#7C8496">audit[AUTH][auth.login] result=success|failure</text>
+  <path d="M355,208 L355,226" stroke="#5B7CFA" stroke-width="2" marker-end="url(#db)"/>
+
+  <rect x="40" y="228" width="630" height="90" rx="14" fill="#111726" stroke="#2A3A75"/>
+  <text x="650" y="254" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۲) صدور دو توکن</text>
+  <text x="650" y="276" text-anchor="end" font-size="11.5" fill="#A7AEBE">access_token = JWT EdDSA · عمر ۱۵ دقیقه · claims: sub, family_id, role, perms[], sid, fp, jti</text>
+  <text x="650" y="294" text-anchor="end" font-size="11.5" fill="#A7AEBE">refresh_token = opaque 256-bit · عمر ۳۰ روز · فقط SHA-256 آن در DB + binding به fingerprint</text>
+  <text x="650" y="312" text-anchor="end" font-size="11" fill="#8FE3AC">kid برای rotation کلید بدون downtime</text>
+  <path d="M355,318 L355,336" stroke="#5B7CFA" stroke-width="2" marker-end="url(#db)"/>
+
+  <rect x="40" y="338" width="630" height="72" rx="14" fill="#111726" stroke="#2A3A75"/>
+  <text x="650" y="364" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۳) ذخیره در کلاینت</text>
+  <text x="650" y="386" text-anchor="end" font-size="11.5" fill="#A7AEBE">access_token ⇒ فقط حافظه (StateFlow) — هرگز روی دیسک نمی‌نشیند</text>
+  <text x="650" y="404" text-anchor="end" font-size="11.5" fill="#A7AEBE">refresh_token ⇒ Proto DataStore + Tink AEAD با کلید در Android Keystore (StrongBox اگر موجود)</text>
+  <path d="M355,410 L355,428" stroke="#5B7CFA" stroke-width="2" marker-end="url(#db)"/>
+
+  <rect x="40" y="430" width="630" height="60" rx="14" fill="#0F2231" stroke="#1E4763"/>
+  <text x="650" y="456" text-anchor="end" font-size="12.5" font-weight="800" fill="#A5DCFA">۴) استفاده: هر درخواست با Authorization: Bearer + اتصال SSE /v1/events</text>
+  <text x="650" y="478" text-anchor="end" font-size="11.5" fill="#A7AEBE">اعتبارسنجی سرور: امضا → exp/nbf/iss/aud → fp match → sid فعال → jti در deny-list نباشد</text>
+  <path d="M355,490 L355,508" stroke="#5B7CFA" stroke-width="2" marker-end="url(#db)"/>
+
+  <rect x="40" y="510" width="630" height="76" rx="14" fill="#251C0C" stroke="#5A4218"/>
+  <text x="650" y="536" text-anchor="end" font-size="12.5" font-weight="800" fill="#FBD08A">۵) انقضا: 401 TOKEN_EXPIRED ⇒ Interceptor به‌صورت خودکار refresh می‌کند</text>
+  <text x="650" y="558" text-anchor="end" font-size="11.5" fill="#FBD08A">درخواست‌های همزمان در یک صف (Mutex) منتظر می‌مانند ⇒ فقط یک refresh انجام می‌شود</text>
+  <text x="650" y="576" text-anchor="end" font-size="11.5" fill="#A7AEBE">refresh موفق ⇒ درخواست اصلی دوباره و شفاف برای کاربر اجرا می‌شود</text>
+  <path d="M355,586 L355,604" stroke="#5B7CFA" stroke-width="2" marker-end="url(#db)"/>
+
+  <rect x="40" y="606" width="630" height="76" rx="14" fill="#111726" stroke="#2A3A75"/>
+  <text x="650" y="632" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۶) چرخش (Rotation): توکن قدیمی used_at می‌گیرد، توکن جدید با parent_token_id صادر می‌شود</text>
+  <text x="650" y="654" text-anchor="end" font-size="11.5" fill="#A7AEBE">زنجیره توکن در DB قابل ردیابی است ⇒ ریشه سرقت قابل شناسایی</text>
+  <text x="650" y="672" text-anchor="end" font-size="11" fill="#8FE3AC">بازگشت به گام ۴</text>
+
+  <rect x="40" y="700" width="630" height="86" rx="14" fill="#160F10" stroke="#5C2222"/>
+  <text x="650" y="726" text-anchor="end" font-size="12.5" font-weight="800" fill="#FCA5A5">⚠ ۷) استفاده مجدد از توکن قدیمی = نشانه سرقت</text>
+  <text x="650" y="748" text-anchor="end" font-size="11.5" fill="#FBA9A9">کل زنجیره refresh revoke · همه sessionها revoke · jtiها در deny-list (Redis, TTL=عمر باقی‌مانده)</text>
+  <text x="650" y="766" text-anchor="end" font-size="11.5" fill="#FBA9A9">audit[SECURITY][auth.token_reuse] result=failure + نوتیف/ایمیل به والد ⇒ کاربر به صفحه ورود می‌رود</text>
+  <text x="650" y="782" text-anchor="end" font-size="11" fill="#A7AEBE">پاسخ: 401 TOKEN_INVALID (نه پیام مبهم)</text>
+
+  <!-- ================= RIGHT: CHILD ================= -->
+  <rect x="730" y="86" width="630" height="34" rx="10" fill="#0F2A24"/>
+  <text x="1340" y="109" text-anchor="end" font-size="14" font-weight="800" fill="#9BE9D2">🟩 مسیر دستگاه فرزند (Child App)</text>
+
+  <rect x="730" y="136" width="630" height="72" rx="14" fill="#0F1A18" stroke="#1D5346"/>
+  <text x="1340" y="162" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۱) Pairing ⇒ دریافت device_id + device_secret (۲۵۶ بیت)</text>
+  <text x="1340" y="184" text-anchor="end" font-size="11.5" fill="#A7AEBE">سرور فقط SHA-256(secret) را در device_credentials ذخیره می‌کند — راز خام هرگز ذخیره نمی‌شود</text>
+  <text x="1340" y="200" text-anchor="end" font-size="11" fill="#7C8496">بدون انقضا ⇒ تجربه کاربری بدون «لاگین ناگهانی» روی گوشی فرزند</text>
+  <path d="M1045,208 L1045,226" stroke="#2DD4A7" stroke-width="2" marker-end="url(#dg)"/>
+
+  <rect x="730" y="228" width="630" height="76" rx="14" fill="#0F1A18" stroke="#1D5346"/>
+  <text x="1340" y="254" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۲) ذخیره: Proto DataStore + Tink AEAD + Android Keystore</text>
+  <text x="1340" y="276" text-anchor="end" font-size="11.5" fill="#A7AEBE">allowBackup=false · data_extraction_rules سخت‌گیرانه · رمزگشایی با کلید نامعتبر ⇒ fail-closed + مسیر re-auth</text>
+  <text x="1340" y="294" text-anchor="end" font-size="11" fill="#8FE3AC">EncryptedSharedPreferences استفاده نمی‌شود (deprecated)</text>
+  <path d="M1045,304 L1045,322" stroke="#2DD4A7" stroke-width="2" marker-end="url(#dg)"/>
+
+  <rect x="730" y="324" width="630" height="112" rx="14" fill="#0F1A18" stroke="#1D5346"/>
+  <text x="1340" y="350" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۳) امضای هر درخواست (HMAC-SHA256)</text>
+  <text x="1340" y="372" text-anchor="end" font-size="11.5" fill="#A7AEBE" direction="ltr">canonical = METHOD | PATH | X-Timestamp | X-Nonce | X-Key-Version | sha256(body) | content-type</text>
+  <text x="1340" y="392" text-anchor="end" font-size="11.5" fill="#A7AEBE">Headers: X-Device-Id · X-Timestamp · X-Nonce · X-Key-Version · X-Signature</text>
+  <text x="1340" y="412" text-anchor="end" font-size="11.5" fill="#8FE3AC">راز روی سیم نمی‌رود · body هم امضا می‌شود ⇒ Tamper-proof</text>
+  <text x="1340" y="430" text-anchor="end" font-size="11" fill="#7C8496">nonce تصادفی ۱۶ بایت برای هر درخواست</text>
+  <path d="M1045,436 L1045,454" stroke="#2DD4A7" stroke-width="2" marker-end="url(#dg)"/>
+
+  <rect x="730" y="456" width="630" height="92" rx="14" fill="#0F2231" stroke="#1E4763"/>
+  <text x="1340" y="482" text-anchor="end" font-size="12.5" font-weight="800" fill="#A5DCFA">۴) اعتبارسنجی سرور (AuthInterceptor)</text>
+  <text x="1340" y="504" text-anchor="end" font-size="11.5" fill="#A7AEBE">|now − ts| ≤ 300s · nonce در Redis نباشد (anti-replay) · credential revoked نباشد</text>
+  <text x="1340" y="522" text-anchor="end" font-size="11.5" fill="#A7AEBE">device.family == family درخواستی · مقایسه HMAC به‌صورت constant-time</text>
+  <text x="1340" y="540" text-anchor="end" font-size="11" fill="#FBD08A">خطا ⇒ failed_auth_count++ · ≥۲۰ ⇒ status='suspended' + Alert «device.tampered»</text>
+  <path d="M1045,548 L1045,566" stroke="#2DD4A7" stroke-width="2" marker-end="url(#dg)"/>
+
+  <rect x="730" y="568" width="630" height="76" rx="14" fill="#0F1A18" stroke="#1D5346"/>
+  <text x="1340" y="594" text-anchor="end" font-size="12.5" font-weight="800" fill="#E6E9EF">۵) چرخه کاری: heartbeat هر ۶۰s ⇒ lease ۹۰s ⇒ presence online</text>
+  <text x="1340" y="616" text-anchor="end" font-size="11.5" fill="#A7AEBE">سرور next_heartbeat_in_sec را برمی‌گرداند (باتری کم ⇒ ۱۸۰s · Dashboard باز ⇒ ۲۰s)</text>
+  <text x="1340" y="634" text-anchor="end" font-size="11" fill="#8FE3AC">قطع اینترنت ⇒ Outbox محلی + retry با backoff + Idempotency-Key (بدون داده تکراری)</text>
+  <path d="M1045,644 L1045,662" stroke="#2DD4A7" stroke-width="2" marker-end="url(#dg)"/>
+
+  <rect x="730" y="664" width="630" height="122" rx="14" fill="#160F10" stroke="#5C2222"/>
+  <text x="1340" y="690" text-anchor="end" font-size="12.5" font-weight="800" fill="#FCA5A5">۶) Revocation — سه سطح</text>
+  <text x="1340" y="712" text-anchor="end" font-size="11.5" fill="#FBA9A9">Logout Device ⇒ فقط sessionها revoke · secret معتبر ⇒ بازگشت بدون pairing جدید</text>
+  <text x="1340" y="730" text-anchor="end" font-size="11.5" fill="#FBA9A9">Revoke Access ⇒ device_credentials.revoked_at + sessionها + push ⇒ همه درخواست‌ها 401</text>
+  <text x="1340" y="748" text-anchor="end" font-size="11.5" fill="#FBA9A9">Remove Device ⇒ revoke + purge داده‌ها + outbox «device.unpair» ⇒ کودک 410 DEVICE_REMOVED</text>
+  <text x="1340" y="768" text-anchor="end" font-size="11" fill="#A7AEBE">سمت کودک: توقف سرویس · پاک‌سازی SecureStore و Room · صفحه «اتصال قطع شد» · صفر درخواست بعدی</text>
+
+  <rect x="730" y="804" width="630" height="62" rx="14" fill="#251C0C" stroke="#5A4218"/>
+  <text x="1340" y="830" text-anchor="end" font-size="12.5" font-weight="800" fill="#FBD08A">۷) تشخیص حذف/دستکاری (بدون Device Owner)</text>
+  <text x="1340" y="852" text-anchor="end" font-size="11.5" fill="#A7AEBE">heartbeat timeout ⇒ device.offline · ACTION_PACKAGE_REMOVED / admin receiver ⇒ device.uninstalled ⇒ Alert به والد</text>
+
+  <!-- bottom band -->
+  <rect x="40" y="884" width="1320" height="52" rx="14" fill="#0E1117" stroke="#272C38"/>
+  <text x="1340" y="908" text-anchor="end" font-size="12" font-weight="800" fill="#E6E9EF">قواعد مشترک: TLS 1.2+ (در release با Certificate Pinning و دو pin) · هیچ token/secret/password در لاگ · request_id سراسری · همه اقدام‌های حساس در audit_logs</text>
+  <text x="1340" y="928" text-anchor="end" font-size="11.5" fill="#A7AEBE">زمان سرور منبع حقیقت است (exp/lease/TTL) ⇒ دستکاری ساعت دستگاه، سیستم را دور نمی‌زند</text>
+</svg>

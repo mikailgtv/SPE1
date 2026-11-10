@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Loading…</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="loc_title">Location</string>
+    <string name="loc_sharing_active">Sharing Active</string>
+    <string name="loc_sharing_off">Sharing Off</string>
+    <string name="loc_sharing_off_note">Location sharing was turned off by the parent; no new coordinates are received or stored.</string>
+    <string name="loc_no_fix_yet">No location received yet.</string>
+    <string name="loc_status_line">Permission: %1$s · Location services: %2$s</string>
+    <string name="loc_current_location">Current location</string>
+    <string name="loc_last_known">Last known location</string>
+    <string name="loc_lat">Latitude</string>
+    <string name="loc_lon">Longitude</string>
+    <string name="loc_accuracy">Accuracy</string>
+    <string name="loc_accuracy_value">Accuracy: %1$s m</string>
+    <string name="loc_updated">Updated</string>
+    <string name="loc_open_map">Open Map</string>
+    <string name="loc_map_title">Map</string>
+    <string name="loc_health">Location Health</string>
+    <string name="loc_health_healthy">Healthy</string>
+    <string name="loc_health_delayed">Delayed</string>
+    <string name="loc_health_unavailable">Unavailable</string>
+    <string name="loc_history">History</string>
+    <string name="loc_today">Today</string>
+    <string name="loc_yesterday">Yesterday</string>
+    <string name="loc_all">All</string>
+    <string name="loc_retention_label">Retention</string>
+    <string name="loc_retention_days">%1$s days</string>
+    <string name="loc_retention_none">No history (latest fix only)</string>
+    <string name="loc_settings">Settings</string>
+    <string name="loc_perm_background">Granted (all the time)</string>
+    <string name="loc_perm_foreground">Granted (while in use)</string>
+    <string name="loc_perm_denied">Denied</string>
+    <string name="loc_perm_unknown">Unknown</string>
+    <string name="loc_provider_on">On</string>
+    <string name="loc_provider_off">Off</string>
+
+    <string name="hist_title">Location History</string>
+    <string name="hist_empty">No records in this range.</string>
+    <string name="hist_count">%1$s records</string>
+    <string name="src_gps">GPS</string>
+    <string name="src_network">Network</string>
+    <string name="src_last_known">Last known</string>
+    <string name="src_passive">Passive</string>
+    <string name="src_fused">Fused</string>
+
+    <string name="locset_title">Location Settings</string>
+    <string name="locset_sharing">Location Sharing</string>
+    <string name="locset_sharing_note">OFF ⇒ the child stops sending and the server stops storing coordinates. ON ⇒ resumes only per the official Android permissions.</string>
+    <string name="locset_perm_needed">Location permission is not granted on the child phone; complete the permission flow in the child app.</string>
+    <string name="locset_retention">History retention policy</string>
+    <string name="locset_ret_7">7 days</string>
+    <string name="locset_ret_30">30 days</string>
+    <string name="locset_ret_90">90 days</string>
+    <string name="locset_ret_off">Disabled</string>
+    <string name="locset_retention_note">Anything older than the selected period is really deleted from the database. “Disabled” keeps only the latest fix.</string>
+    <string name="locset_delete">Delete History</string>
+    <string name="locset_deleted">%1$s records deleted</string>
+    <string name="locset_del_today">Delete Today</string>
+    <string name="locset_del_7">Delete Last 7 Days</string>
+    <string name="locset_del_all">Delete All History</string>
+    <string name="locset_del_all_final">Delete everything</string>
+    <string name="locset_delete_note">Deletion is real on the backend and irreversible.</string>
+    <string name="locset_confirm_today">Delete all of today\'s locations?</string>
+    <string name="locset_confirm_7">Delete all locations from the last 7 days?</string>
+    <string name="locset_confirm_all">Permanently delete ALL location history for this device? This cannot be undone.</string>
+
+    <string name="childloc_title">Location</string>
+    <string name="childloc_active">🟢 Location Sharing Active</string>
+    <string name="childloc_perm_required">🔴 Location Permission Required</string>
+    <string name="childloc_sharing_off">🔴 Sharing turned off by parent</string>
+    <string name="childloc_text">Only the approximate device location is sent to the parent; no listening, no camera, no hidden history.</string>
+    <string name="childloc_grant">Grant permission (official Android flow)</string>
+    <string name="childloc_perm_label">Permission</string>
+    <string name="childloc_services_label">Location Services</string>
+    <string name="childloc_services_on">🟢 On</string>
+    <string name="childloc_services_off">🔴 Off — turn on device Location</string>
+    <string name="childloc_background_hint">To receive location while the app is closed, choose “Allow all the time” in the settings page.</string>
+    <string name="childloc_open_app_settings">App permission settings</string>
+    <string name="childloc_turn_on_services">Turn on Location services</string>
+</resources>

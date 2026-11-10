@@ -1,0 +1,68 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER:?Set DB_USER in deploy/.env}
+      POSTGRES_PASSWORD: ${DB_PASS:?Set a strong DB_PASS in deploy/.env}
+      POSTGRES_DB: guardianlink
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:?Set DB_USER in deploy/.env} -d guardianlink"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  server:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DB_URL: ${DB_URL:-jdbc:postgresql://db:5432/guardianlink}
+      DB_USER: ${DB_USER:?Set DB_USER in deploy/.env}
+      DB_PASS: ${DB_PASS:?Set DB_PASS in deploy/.env}
+      DB_POOL_MAX: ${DB_POOL_MAX:-10}
+      DB_POOL_MIN: ${DB_POOL_MIN:-2}
+      DB_CONNECTION_TIMEOUT_MS: ${DB_CONNECTION_TIMEOUT_MS:-5000}
+      DB_VALIDATION_TIMEOUT_MS: ${DB_VALIDATION_TIMEOUT_MS:-3000}
+      DB_IDLE_TIMEOUT_MS: ${DB_IDLE_TIMEOUT_MS:-600000}
+      DB_MAX_LIFETIME_MS: ${DB_MAX_LIFETIME_MS:-1800000}
+      DATA_DIR: /data
+      PRESENCE_LEASE_SEC: ${PRESENCE_LEASE_SEC:-1200}
+      PAIRING_TTL_SEC: ${PAIRING_TTL_SEC:-300}
+    # Backend is not exposed publicly; Caddy reaches it over the private Compose network.
+    # For development only, use a local override and bind 127.0.0.1:8080 (or a trusted LAN IP).
+    expose:
+      - "8080"
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - serverdata:/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # TLS edge اختیاری برای تست single-host؛ این پروفایل production-grade نیست.
+  caddy:
+    image: caddy:2-alpine
+    profiles: ["edge"]
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ../web/dist:/srv:ro
+      - caddydata:/data
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in deploy/.env}
+    depends_on:
+      - server
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  dbdata:
+  serverdata:
+  caddydata:

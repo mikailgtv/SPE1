@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1010" viewBox="0 0 1400 1010" font-family="Vazirmatn, Tahoma, Segoe UI, sans-serif" direction="rtl">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#5B7CFA"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2DD4A7"/></marker>
+    <marker id="ai" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#38BDF8"/></marker>
+    <marker id="ar2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#EF4444"/></marker>
+  </defs>
+
+  <rect width="1400" height="1010" fill="#0B0D12"/>
+  <text x="1360" y="40" text-anchor="end" font-size="24" font-weight="800" fill="#E6E9EF">Pairing Flow — کد یک‌بارمصرف / QR</text>
+  <text x="1360" y="64" text-anchor="end" font-size="13" fill="#A7AEBE">Crockford Base32 · ۸ کاراکتر (۴۰ بیت آنتروپی) · TTL ۱۰ دقیقه · یک‌بارمصرف · حداکثر ۱۰ تلاش · تأیید دوطرفه</text>
+
+  <!-- lane headers -->
+  <rect x="40" y="86" width="380" height="44" rx="12" fill="#141C3A" stroke="#2A3A75"/>
+  <text x="230" y="114" text-anchor="middle" font-size="15" font-weight="800" fill="#BFD0FF">🟦 PARENT APP</text>
+  <rect x="470" y="86" width="380" height="44" rx="12" fill="#1A1F2A" stroke="#3A4050"/>
+  <text x="660" y="114" text-anchor="middle" font-size="15" font-weight="800" fill="#E6E9EF">🖥 BACKEND</text>
+  <rect x="900" y="86" width="380" height="44" rx="12" fill="#0F2A24" stroke="#1D5346"/>
+  <text x="1090" y="114" text-anchor="middle" font-size="15" font-weight="800" fill="#9BE9D2">🟩 CHILD APP</text>
+
+  <!-- lifelines -->
+  <line x1="230" y1="130" x2="230" y2="790" stroke="#272C38" stroke-width="2" stroke-dasharray="4 6"/>
+  <line x1="660" y1="130" x2="660" y2="790" stroke="#272C38" stroke-width="2" stroke-dasharray="4 6"/>
+  <line x1="1090" y1="130" x2="1090" y2="790" stroke="#272C38" stroke-width="2" stroke-dasharray="4 6"/>
+
+  <!-- STEP 1 -->
+  <circle cx="230" cy="162" r="13" fill="#5B7CFA"/><text x="230" y="167" text-anchor="middle" font-size="12" font-weight="800" fill="#0B1020">1</text>
+  <text x="256" y="158" font-size="12" font-weight="700" fill="#E6E9EF">POST /v1/pairing/codes</text>
+  <text x="256" y="176" font-size="11" fill="#A7AEBE">{ttl: 600s, child_profile: «سارا»} + Idempotency-Key</text>
+  <path d="M250,196 L648,196" stroke="#5B7CFA" stroke-width="2" marker-end="url(#ab)"/>
+
+  <!-- STEP 2 -->
+  <circle cx="660" cy="228" r="13" fill="#3A4050"/><text x="660" y="233" text-anchor="middle" font-size="12" font-weight="800" fill="#E6E9EF">2</text>
+  <text x="686" y="224" font-size="12" font-weight="700" fill="#E6E9EF">SecureRandom → «7QK4-M2XP»</text>
+  <text x="686" y="242" font-size="11" fill="#A7AEBE">ذخیره فقط SHA-256(code) · expires=now+10m · max_attempts=10</text>
+  <text x="686" y="260" font-size="11" fill="#A7AEBE">audit[PAIRING][pairing.code_created] · rate limit 5/min</text>
+  <text x="686" y="278" font-size="11" fill="#8FE3AC">201 {pairing_id, code, qr_payload: gl1://pair?c=…&amp;s=…, expires_at}</text>
+  <path d="M640,298 L252,298" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ai)"/>
+
+  <!-- STEP 3 -->
+  <circle cx="230" cy="330" r="13" fill="#5B7CFA"/><text x="230" y="335" text-anchor="middle" font-size="12" font-weight="800" fill="#0B1020">3</text>
+  <text x="256" y="326" font-size="12" font-weight="700" fill="#E6E9EF">نمایش QR + کد + Countdown ۱۰:۰۰</text>
+  <text x="256" y="344" font-size="11" fill="#A7AEBE">وضعیت زنده: «در انتظار اسکن فرزند…» (بدون refresh دستی)</text>
+
+  <!-- STEP 4 -->
+  <circle cx="1090" cy="380" r="13" fill="#2DD4A7"/><text x="1090" y="385" text-anchor="middle" font-size="12" font-weight="800" fill="#04211B">4</text>
+  <text x="1064" y="376" text-anchor="end" font-size="12" font-weight="700" fill="#E6E9EF">اسکن QR (CameraX+ZXing) یا ورود کد</text>
+  <text x="1064" y="394" text-anchor="end" font-size="11" fill="#A7AEBE">تصحیح خودکار I→1, O→0 · چسباندن از کلیپ‌بورد</text>
+  <path d="M1070,414 L672,414" stroke="#2DD4A7" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="1064" y="410" text-anchor="end" font-size="11" font-weight="700" fill="#9BE9D2">POST /v1/pairing/exchange {code, install_id, device_key_id, Build.*, capabilities}</text>
+
+  <!-- STEP 5 -->
+  <circle cx="660" cy="446" r="13" fill="#3A4050"/><text x="660" y="451" text-anchor="middle" font-size="12" font-weight="800" fill="#E6E9EF">5</text>
+  <text x="686" y="442" font-size="12" font-weight="700" fill="#E6E9EF">اعتبارسنجی + ساخت دستگاه (یک Transaction)</text>
+  <text x="686" y="460" font-size="11" fill="#A7AEBE">code_hash lookup · expires? · attempt_count++ · device_limit? · install_id dup?</text>
+  <text x="686" y="478" font-size="11" fill="#A7AEBE">insert devices(pairing_pending) + device_credentials(secret_hash) + device_status</text>
+  <text x="686" y="496" font-size="11" fill="#A7AEBE">pairing_codes.status='redeemed' · audit[PAIRING][pairing.redeemed]</text>
+  <text x="686" y="514" font-size="11" fill="#FBD08A">201 {device_id, device_secret ⚠️ فقط یک‌بار, consent{…}, heartbeat 60s/lease 90s}</text>
+  <path d="M680,534 L1078,534" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ai)"/>
+
+  <!-- STEP 5b SSE to parent -->
+  <path d="M640,556 L252,556" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ai)"/>
+  <text x="634" y="551" text-anchor="end" font-size="11" font-weight="700" fill="#A5DCFA">SSE pairing.redeemed ⇒ «دستگاه Pixel 8 پیدا شد ✓»</text>
+
+  <!-- STEP 6 -->
+  <circle cx="1090" cy="592" r="13" fill="#2DD4A7"/><text x="1090" y="597" text-anchor="middle" font-size="12" font-weight="800" fill="#04211B">6</text>
+  <text x="1064" y="588" text-anchor="end" font-size="12" font-weight="700" fill="#E6E9EF">device_secret → SecureStore (Tink AEAD + Keystore)</text>
+  <text x="1064" y="606" text-anchor="end" font-size="11" fill="#A7AEBE">پاک‌سازی کپی حافظه · هرگز در لاگ چاپ نمی‌شود</text>
+
+  <!-- STEP 7 -->
+  <circle cx="1090" cy="642" r="13" fill="#2DD4A7"/><text x="1090" y="647" text-anchor="middle" font-size="12" font-weight="800" fill="#04211B">7</text>
+  <text x="1064" y="638" text-anchor="end" font-size="12" font-weight="700" fill="#E6E9EF">🧒 صفحه شفافیت اجباری — «والد چه چیزی می‌بیند»</text>
+  <text x="1064" y="656" text-anchor="end" font-size="11" fill="#A7AEBE">✅ وضعیت · ✅ باتری · ✅ اطلاعات دستگاه · ✅ مجوزها · ⛔ مکان · ⛔ زمان</text>
+  <text x="1064" y="674" text-anchor="end" font-size="11" fill="#FBD08A">[می‌پذیرم]  یا  [می‌خواهم اول با والد صحبت کنم] ⇒ pairing.paused</text>
+  <path d="M1070,694 L672,694" stroke="#2DD4A7" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="1064" y="690" text-anchor="end" font-size="11" font-weight="700" fill="#9BE9D2">POST /v1/pairing/confirm (با اولین امضای HMAC) {consent_version, granted[]}</text>
+
+  <!-- STEP 8 -->
+  <circle cx="660" cy="726" r="13" fill="#3A4050"/><text x="660" y="731" text-anchor="middle" font-size="12" font-weight="800" fill="#E6E9EF">8</text>
+  <text x="686" y="722" font-size="12" font-weight="700" fill="#E6E9EF">تأیید امضا · ثبت رضایت · فعال‌سازی دستگاه</text>
+  <text x="686" y="740" font-size="11" fill="#A7AEBE">insert data_consents · devices.status='active' · device_sessions(child_device)</text>
+  <text x="686" y="758" font-size="11" fill="#A7AEBE">audit[PAIRING][pairing.confirmed] + [PRIVACY][consent.granted] · outbox event</text>
+  <path d="M640,778 L252,778" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ai)"/>
+  <text x="634" y="773" text-anchor="end" font-size="11" font-weight="700" fill="#A5DCFA">SSE pairing.completed + FCM «دستگاه سارا متصل شد»</text>
+
+  <!-- STEP 9 -->
+  <circle cx="230" cy="812" r="13" fill="#5B7CFA"/><text x="230" y="817" text-anchor="middle" font-size="12" font-weight="800" fill="#0B1020">9</text>
+  <text x="256" y="808" font-size="12" font-weight="700" fill="#E6E9EF">Dashboard: 🟢 Online · 🔋 ۷۴٪ · 🔄 همین حالا</text>
+  <text x="256" y="826" font-size="11" fill="#A7AEBE">GET /v1/devices + /snapshot (با ETag)</text>
+  <circle cx="1090" cy="812" r="13" fill="#2DD4A7"/><text x="1090" y="817" text-anchor="middle" font-size="12" font-weight="800" fill="#04211B">✓</text>
+  <text x="1064" y="808" text-anchor="end" font-size="12" font-weight="700" fill="#E6E9EF">SyncForegroundService شروع می‌شود</text>
+  <text x="1064" y="826" text-anchor="end" font-size="11" fill="#A7AEBE">heartbeat هر ۶۰ ثانیه + Outbox flush</text>
+
+  <!-- FAILURE BOX -->
+  <rect x="40" y="856" width="1240" height="130" rx="16" fill="#160F10" stroke="#5C2222"/>
+  <text x="1260" y="884" text-anchor="end" font-size="14" font-weight="800" fill="#FCA5A5">⚠ مسیرهای خطا (همه در Phase 1 تست می‌شوند)</text>
+  <text x="1260" y="910" text-anchor="end" font-size="11.5" fill="#FBD08A">کد اشتباه ⇒ 422 PAIRING_CODE_INVALID {attempts_left} · بیش از ۱۰ تلاش ⇒ status='invalidated' + audit[SECURITY]</text>
+  <text x="1260" y="932" text-anchor="end" font-size="11.5" fill="#FBD08A">منقضی ⇒ 422 PAIRING_CODE_EXPIRED (در والد countdown قرمز + «کد جدید») · استفاده مجدد ⇒ 422 PAIRING_CODE_USED</text>
+  <text x="1260" y="954" text-anchor="end" font-size="11.5" fill="#FBD08A">سقف دستگاه ⇒ 409 DEVICE_LIMIT_REACHED · نصب مجدد ⇒ 409 ALREADY_PAIRED (پیشنهاد بازیابی) · Rate limit ⇒ 429 + Retry-After</text>
+  <text x="1260" y="976" text-anchor="end" font-size="11.5" fill="#8FE3AC">قطع اینترنت کودک ⇒ صف Outbox + «در انتظار اتصال» + به محض اتصال کامل می‌شود (بدون کد جدید)</text>
+</svg>

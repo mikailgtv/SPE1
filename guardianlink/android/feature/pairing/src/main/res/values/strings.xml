@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_title">اتصال دستگاه فرزند</string>
+    <string name="pair_subtitle">این کد را فقط به فرزند خود بدهید. کد یک‌بار مصرف است و پس از انقضا باید کد جدید بسازید.</string>
+    <string name="pair_expires">اعتبار: %1$s:%2$s دقیقه دیگر</string>
+    <string name="pair_onetime">پس از استفاده، این کد برای همیشه باطل می‌شود.</string>
+    <string name="pair_new">ساخت کد جدید</string>
+    <string name="pair_done">بازگشت</string>
+    <string name="qr_desc">QR code pairing</string>
+    <string name="loading">در حال بارگذاری…</string>
+    <string name="setup_title">اتصال به والد</string>
+    <string name="setup_text">کد pairing را که والد شما داده است وارد کنید.</string>
+    <string name="setup_field">کد Pairing</string>
+    <string name="setup_connect">اتصال</string>
+    <string name="setup_code_bad">کد باید ۸ کاراکتر باشد.</string>
+    <string name="confirm_title">تأیید اتصال</string>
+    <string name="confirm_family">خانواده: %1$s</string>
+    <string name="confirm_parent">والد: %1$s</string>
+    <string name="confirm_device_name">نام این دستگاه</string>
+    <string name="confirm_notice">با تأیید شما این دستگاه به خانواده متصل می‌شود. والد فقط داده‌هایی را می‌بیند که این برنامه صریحاً گزارش می‌کند؛ مجوزهای هر قابلیت جداگانه و با رضایت Android مدیریت می‌شوند.</string>
+    <string name="confirm_btn">تأیید و اتصال</string>
+</resources>

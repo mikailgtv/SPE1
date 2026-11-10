@@ -1,0 +1,55 @@
+name: Reusable release quality gates
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.7.1'
+      - run: gradle -p server test --no-daemon
+      - run: docker build --tag guardianlink-server:release-gate-${{ github.sha }} server
+      - name: Scan backend image for High/Critical vulnerabilities
+        uses: aquasecurity/trivy-action@0.36.0
+        with:
+          scan-type: image
+          image-ref: guardianlink-server:release-gate-${{ github.sha }}
+          scanners: vuln
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: '1'
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.7.1'
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - run: >-
+          gradle -p android
+          :core:common:testDebugUnitTest :core:storage:testDebugUnitTest
+          :core:network:testDebugUnitTest :core:designsystem:testDebugUnitTest
+          :feature:auth:testDebugUnitTest :feature:pairing:testDebugUnitTest
+          :feature:dashboard:testDebugUnitTest :feature:childstatus:testDebugUnitTest
+          :feature:usage:testDebugUnitTest :feature:location:testDebugUnitTest
+          :app-parent:testDebugUnitTest :app-child:testDebugUnitTest
+          :app-parent:lintDebug :app-child:lintDebug
+          --no-daemon

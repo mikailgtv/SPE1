@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+  security-events: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend tests (unit + PostgreSQL integration)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.7.1'
+      - name: Run backend tests
+        run: gradle -p server test --no-daemon
+      - name: Build backend container image
+        run: docker build --tag guardianlink-server:ci-${{ github.sha }} server
+      - name: Scan backend image for High/Critical vulnerabilities
+        uses: aquasecurity/trivy-action@0.36.0
+        with:
+          scan-type: image
+          image-ref: guardianlink-server:ci-${{ github.sha }}
+          scanners: vuln
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: '1'
+
+  android:
+    name: Android lint, unit tests and debug builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.7.1'
+      - name: Install Android SDK platform
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Android unit tests
+        run: >-
+          gradle -p android
+          :core:common:testDebugUnitTest
+          :core:storage:testDebugUnitTest
+          :core:network:testDebugUnitTest
+          :core:designsystem:testDebugUnitTest
+          :feature:auth:testDebugUnitTest
+          :feature:pairing:testDebugUnitTest
+          :feature:dashboard:testDebugUnitTest
+          :feature:childstatus:testDebugUnitTest
+          :feature:usage:testDebugUnitTest
+          :feature:location:testDebugUnitTest
+          :app-parent:testDebugUnitTest
+          :app-child:testDebugUnitTest
+          --no-daemon
+      - name: Android lint and debug builds
+        run: >-
+          gradle -p android
+          :app-parent:lintDebug :app-child:lintDebug
+          :app-parent:assembleDebug :app-child:assembleDebug
+          --no-daemon
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: android-debug-apks-${{ github.sha }}
+          path: |
+            android/app-parent/build/outputs/apk/debug/*.apk
+            android/app-child/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7

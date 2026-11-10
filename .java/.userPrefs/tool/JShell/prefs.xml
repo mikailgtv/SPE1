@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE map SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<map MAP_XML_VERSION="1.0">
+  <entry key="HISTORY_LINE_0" value="import de.mkammerer.argon2.Argon2Factory;"/>
+  <entry key="HISTORY_LINE_1" value="var a=Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);"/>
+  <entry key="HISTORY_LINE_2" value="System.out.println(a.hash(3,64*1024,1,&quot;test-test-password&quot;.toCharArray()));"/>
+  <entry key="REPLAY_RESTORE" value="import de.mkammerer.argon2.Argon2Factory;␞var a=Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);␞System.out.println(a.hash(3,64*1024,1,&quot;test-test-password&quot;.toCharArray()));"/>
+</map>

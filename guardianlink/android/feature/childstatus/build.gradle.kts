@@ -1,0 +1,36 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = "ir.guardianlink.feature.childstatus"
+    compileSdk = 36
+    defaultConfig { minSdk = 26 }
+    buildFeatures { compose = true }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+kotlin { jvmToolchain(17) }
+
+dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":feature:usage"))
+    implementation(project(":feature:location"))
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.work)
+    implementation(libs.coroutines.core)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.gson)
+    implementation(libs.play.services.location)
+    testImplementation(libs.junit)
+}

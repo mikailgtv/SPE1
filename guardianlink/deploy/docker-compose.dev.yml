@@ -1,0 +1,6 @@
+# Development-only override. For a physical test phone, bind to a trusted LAN interface
+# by setting SERVER_BIND_ADDRESS in deploy/.env; never use this override on production.
+services:
+  server:
+    ports:
+      - "${SERVER_BIND_ADDRESS:-127.0.0.1}:8080:8080"

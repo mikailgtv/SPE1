@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">در حال بارگذاری…</string>
+    <string name="back">بازگشت</string>
+    <string name="cancel">انصراف</string>
+
+    <string name="loc_title">موقعیت مکانی</string>
+    <string name="loc_sharing_active">اشتراک موقعیت فعال</string>
+    <string name="loc_sharing_off">اشتراک موقعیت خاموش</string>
+    <string name="loc_sharing_off_note">اشتراک موقعیت توسط والد خاموش شده است؛ مختصات جدید دریافت/ذخیره نمی‌شود.</string>
+    <string name="loc_no_fix_yet">هنوز موقعیتی دریافت نشده است.</string>
+    <string name="loc_status_line">مجوز: %1$s · سرویس مکان: %2$s</string>
+    <string name="loc_current_location">موقعیت فعلی</string>
+    <string name="loc_last_known">آخرین موقعیت معلوم</string>
+    <string name="loc_lat">عرض جغرافیایی</string>
+    <string name="loc_lon">طول جغرافیایی</string>
+    <string name="loc_accuracy">دقت</string>
+    <string name="loc_accuracy_value">دقت: %1$s متر</string>
+    <string name="loc_updated">به‌روزرسانی</string>
+    <string name="loc_open_map">باز کردن نقشه</string>
+    <string name="loc_map_title">نقشه</string>
+    <string name="loc_health">سلامت موقعیت</string>
+    <string name="loc_health_healthy">سالم</string>
+    <string name="loc_health_delayed">با تأخیر</string>
+    <string name="loc_health_unavailable">در دسترس نیست</string>
+    <string name="loc_history">تاریخچه</string>
+    <string name="loc_today">امروز</string>
+    <string name="loc_yesterday">دیروز</string>
+    <string name="loc_all">همه</string>
+    <string name="loc_retention_label">نگهداری</string>
+    <string name="loc_retention_days">%1$s روز</string>
+    <string name="loc_retention_none">بدون تاریخچه (فقط آخرین موقعیت)</string>
+    <string name="loc_settings">تنظیمات</string>
+    <string name="loc_perm_background">مجاز (همیشه)</string>
+    <string name="loc_perm_foreground">مجاز (هنگام استفاده)</string>
+    <string name="loc_perm_denied">رد شده</string>
+    <string name="loc_perm_unknown">نامعلوم</string>
+    <string name="loc_provider_on">روشن</string>
+    <string name="loc_provider_off">خاموش</string>
+
+    <string name="hist_title">تاریخچه موقعیت</string>
+    <string name="hist_empty">رکوردی در این بازه نیست.</string>
+    <string name="hist_count">%1$s رکورد</string>
+    <string name="src_gps">GPS</string>
+    <string name="src_network">شبکه</string>
+    <string name="src_last_known">آخرین موقعیت معلوم</string>
+    <string name="src_passive">غیرفعال</string>
+    <string name="src_fused">ترکیبی</string>
+
+    <string name="locset_title">تنظیمات موقعیت</string>
+    <string name="locset_sharing">اشتراک موقعیت</string>
+    <string name="locset_sharing_note">خاموش ⇒ کودک مختصات جدید نمی‌فرستد و سرور هم هیچ مختصاتی ذخیره نمی‌کند. روشن ⇒ فقط طبق مجوزهای رسمی اندروید از سر گرفته می‌شود.</string>
+    <string name="locset_perm_needed">مجوز موقعیت در گوشی کودک فعال نیست؛ جریان مجوز را در اپ کودک کامل کنید.</string>
+    <string name="locset_retention">سیاست نگهداری تاریخچه</string>
+    <string name="locset_ret_7">۷ روز</string>
+    <string name="locset_ret_30">۳۰ روز</string>
+    <string name="locset_ret_90">۹۰ روز</string>
+    <string name="locset_ret_off">غیرفعال</string>
+    <string name="locset_retention_note">قدیمی‌تر از دوره‌ی انتخابی به‌صورت خودکار و واقعی از پایگاه داده پاک می‌شود. «غیرفعال» یعنی فقط آخرین موقعیت نگه داشته شود.</string>
+    <string name="locset_delete">حذف تاریخچه</string>
+    <string name="locset_deleted">%1$s رکورد حذف شد</string>
+    <string name="locset_del_today">حذف امروز</string>
+    <string name="locset_del_7">حذف ۷ روز اخیر</string>
+    <string name="locset_del_all">حذف همه‌ی تاریخچه</string>
+    <string name="locset_del_all_final">حذف قطعی همه</string>
+    <string name="locset_delete_note">حذف روی سرور واقعی و غیرقابل بازگشت است.</string>
+    <string name="locset_confirm_today">همه‌ی موقعیت‌های امروز حذف شوند؟</string>
+    <string name="locset_confirm_7">همه‌ی موقعیت‌های ۷ روز اخیر حذف شوند؟</string>
+    <string name="locset_confirm_all">همه‌ی تاریخچه‌ی موقعیت این دستگاه برای همیشه حذف شود؟ این عمل قابل بازگشت نیست.</string>
+
+    <!-- کارت موقعیت در اپ کودک -->
+    <string name="childloc_title">موقعیت مکانی</string>
+    <string name="childloc_active">🟢 اشتراک موقعیت فعال</string>
+    <string name="childloc_perm_required">🔴 مجوز موقعیت لازم است</string>
+    <string name="childloc_sharing_off">🔴 اشتراک موقعیت توسط والد خاموش است</string>
+    <string name="childloc_text">فقط موقعیت تقریبی دستگاه برای والد ارسال می‌شود؛ بدون شنود، بدون دوربین و بدون تاریخچه‌ی پنهان.</string>
+    <string name="childloc_grant">دادن مجوز (جریان رسمی اندروید)</string>
+    <string name="childloc_perm_label">مجوز</string>
+    <string name="childloc_services_label">سرویس مکان</string>
+    <string name="childloc_services_on">🟢 روشن</string>
+    <string name="childloc_services_off">🔴 خاموش — Location گوشی را روشن کنید</string>
+    <string name="childloc_background_hint">برای دریافت موقعیت وقتی اپ بسته است، در صفحه‌ی تنظیمات گزینه‌ی «Allow all the time» را انتخاب کنید.</string>
+    <string name="childloc_open_app_settings">تنظیمات مجوز اپ</string>
+    <string name="childloc_turn_on_services">روشن کردن سرویس مکان</string>
+</resources>

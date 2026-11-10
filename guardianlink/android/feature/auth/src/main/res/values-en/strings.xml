@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_title">One family, one clear view</string>
+    <string name="auth_subtitle">Parental management and care of the child device</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_account">Create account</string>
+    <string name="need_account">No account? Create one</string>
+    <string name="have_account">Have an account? Sign in</string>
+    <string name="err_email_format">Email format is invalid.</string>
+    <string name="err_password_short">Password must be 12 to 128 characters.</string>
+    <string name="family_title">Create family</string>
+    <string name="family_subtitle">Pick a name for your family.</string>
+    <string name="family_name">Family name</string>
+    <string name="create_family">Create family</string>
+    <string name="err_family_name">Family name is invalid.</string>
+</resources>

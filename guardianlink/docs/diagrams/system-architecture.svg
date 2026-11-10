@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" font-family="Vazirmatn, Tahoma, Segoe UI, sans-serif" direction="rtl">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#7C8496"/></marker>
+    <marker id="arb" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#5B7CFA"/></marker>
+    <marker id="arg" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2DD4A7"/></marker>
+    <marker id="aro" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#F59E0B"/></marker>
+    <marker id="arr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#EF4444"/></marker>
+  </defs>
+
+  <rect width="1440" height="960" fill="#0B0D12"/>
+  <text x="1400" y="44" text-anchor="end" font-size="24" font-weight="800" fill="#E6E9EF">GuardianLink — معماری سیستم</text>
+  <text x="1400" y="68" text-anchor="end" font-size="13" fill="#A7AEBE">دو کلاینت Android + یک Backend خودمیزبان (Multi-tenant) + FCM فقط برای Push · فاز ۱</text>
+
+  <!-- ============ PARENT APP ============ -->
+  <rect x="40" y="100" width="400" height="270" rx="18" fill="#111726" stroke="#2A3A75" stroke-width="1.5"/>
+  <rect x="40" y="100" width="400" height="42" rx="18" fill="#141C3A"/>
+  <rect x="40" y="124" width="400" height="18" fill="#141C3A"/>
+  <text x="420" y="128" text-anchor="end" font-size="16" font-weight="800" fill="#BFD0FF">🟦 Parent App — :app:parent</text>
+  <text x="60" y="128" text-anchor="start" font-size="11" fill="#8FA3FF" direction="ltr">com.guardianlink.parent</text>
+
+  <text x="420" y="168" text-anchor="end" font-size="11.5" fill="#7C8496">Presentation</text>
+  <text x="420" y="186" text-anchor="end" font-size="12" fill="#E6E9EF">Compose · M3 · RTL · NavHost · BottomBar</text>
+  <text x="420" y="212" text-anchor="end" font-size="11.5" fill="#7C8496">Features</text>
+  <text x="420" y="230" text-anchor="end" font-size="12" fill="#E6E9EF">auth · onboarding · pairing · dashboard</text>
+  <text x="420" y="248" text-anchor="end" font-size="12" fill="#E6E9EF">devices · alerts · settings</text>
+  <text x="420" y="276" text-anchor="end" font-size="11.5" fill="#7C8496">Domain / Data</text>
+  <text x="420" y="294" text-anchor="end" font-size="12" fill="#E6E9EF">MVVM · Repository · Room cache · Outbox</text>
+  <text x="420" y="320" text-anchor="end" font-size="11.5" fill="#7C8496">Core</text>
+  <text x="420" y="338" text-anchor="end" font-size="12" fill="#E6E9EF">SecureStore (Tink+Keystore) · SSE · Logger</text>
+  <text x="420" y="358" text-anchor="end" font-size="11" fill="#8FE3AC">Auth: JWT 15m + Refresh چرخشی 30d</text>
+
+  <!-- ============ CHILD APP ============ -->
+  <rect x="1000" y="100" width="400" height="270" rx="18" fill="#0F1A18" stroke="#1D5346" stroke-width="1.5"/>
+  <rect x="1000" y="100" width="400" height="42" rx="18" fill="#0F2A24"/>
+  <rect x="1000" y="124" width="400" height="18" fill="#0F2A24"/>
+  <text x="1380" y="128" text-anchor="end" font-size="16" font-weight="800" fill="#9BE9D2">🟩 Child App — :app:child</text>
+  <text x="1020" y="128" text-anchor="start" font-size="11" fill="#2DD4A7" direction="ltr">com.guardianlink.child</text>
+
+  <text x="1380" y="168" text-anchor="end" font-size="11.5" fill="#7C8496">Features</text>
+  <text x="1380" y="186" text-anchor="end" font-size="12" fill="#E6E9EF">welcome · consent · permissionwizard</text>
+  <text x="1380" y="204" text-anchor="end" font-size="12" fill="#E6E9EF">pairing (QR/code) · status · transparency · sos</text>
+  <text x="1380" y="232" text-anchor="end" font-size="11.5" fill="#7C8496">Services</text>
+  <text x="1380" y="250" text-anchor="end" font-size="12" fill="#E6E9EF">SyncFGS (heartbeat 60s) · Outbox Worker</text>
+  <text x="1380" y="268" text-anchor="end" font-size="12" fill="#E6E9EF">BootReceiver · Enforcement (P5) · VPN (P6)</text>
+  <text x="1380" y="296" text-anchor="end" font-size="11.5" fill="#7C8496">Collectors</text>
+  <text x="1380" y="314" text-anchor="end" font-size="12" fill="#E6E9EF">Battery · Connectivity · DeviceInfo · Permissions</text>
+  <text x="1380" y="340" text-anchor="end" font-size="11.5" fill="#7C8496">Auth</text>
+  <text x="1380" y="358" text-anchor="end" font-size="11" fill="#8FE3AC">Device Credential: HMAC-SHA256 هر درخواست</text>
+
+  <!-- ============ BACKEND ============ -->
+  <rect x="510" y="470" width="420" height="300" rx="18" fill="#12151C" stroke="#3A4050" stroke-width="1.5"/>
+  <rect x="510" y="470" width="420" height="42" rx="18" fill="#1A1F2A"/>
+  <rect x="510" y="494" width="420" height="18" fill="#1A1F2A"/>
+  <text x="910" y="498" text-anchor="end" font-size="16" font-weight="800" fill="#E6E9EF">🖥 Backend — Ktor 3.6 (Kotlin/JVM 21)</text>
+  <text x="530" y="498" text-anchor="start" font-size="11" fill="#A7AEBE" direction="ltr">/v1 · RFC7807 · OpenAPI</text>
+
+  <text x="910" y="538" text-anchor="end" font-size="12" fill="#E6E9EF">modules: identity · family · pairing · device</text>
+  <text x="910" y="558" text-anchor="end" font-size="12" fill="#E6E9EF">telemetry · audit  (+ location/screentime/… در P2-P8)</text>
+  <text x="910" y="586" text-anchor="end" font-size="12" fill="#E6E9EF">shared: errors · auth(JWT/HMAC) · ratelimit</text>
+  <text x="910" y="606" text-anchor="end" font-size="12" fill="#E6E9EF">sse · outbox · crypto(Argon2id/AES-GCM)</text>
+  <text x="910" y="634" text-anchor="end" font-size="12" fill="#FBD08A">Multi-tenancy: ۳ لایه — principal → scoped query → RLS</text>
+  <text x="910" y="662" text-anchor="end" font-size="11.5" fill="#7C8496">Jobs</text>
+  <text x="910" y="680" text-anchor="end" font-size="12" fill="#E6E9EF">Lease sweeper (90s) · Outbox dispatcher · Retention purge</text>
+  <text x="910" y="708" text-anchor="end" font-size="11.5" fill="#7C8496">Observability</text>
+  <text x="910" y="726" text-anchor="end" font-size="12" fill="#E6E9EF">JSON logs (redacted) · request_id · Prometheus · audit_logs</text>
+  <text x="910" y="754" text-anchor="end" font-size="11" fill="#A5DCFA">Docker Compose · Caddy TLS · Flyway migrations</text>
+
+  <!-- ============ DATA STORES ============ -->
+  <rect x="40" y="820" width="400" height="110" rx="16" fill="#12151C" stroke="#2C3342"/>
+  <text x="420" y="850" text-anchor="end" font-size="15" font-weight="800" fill="#E6E9EF">🐘 PostgreSQL 17</text>
+  <text x="420" y="874" text-anchor="end" font-size="11.5" fill="#A7AEBE">۱۸ جدول Phase 1 · UUIDv7 · RLS · pgcrypto</text>
+  <text x="420" y="894" text-anchor="end" font-size="11.5" fill="#A7AEBE">Flyway V1..V10 (هر Phase یک migration)</text>
+  <text x="420" y="914" text-anchor="end" font-size="11" fill="#7C8496">نقش gl_app بدون BYPASSRLS</text>
+
+  <rect x="1000" y="820" width="400" height="110" rx="16" fill="#12151C" stroke="#2C3342"/>
+  <text x="1380" y="850" text-anchor="end" font-size="15" font-weight="800" fill="#E6E9EF">⚡ Redis 7</text>
+  <text x="1380" y="874" text-anchor="end" font-size="11.5" fill="#A7AEBE">Rate limit (sliding window) · Nonce anti-replay</text>
+  <text x="1380" y="894" text-anchor="end" font-size="11.5" fill="#A7AEBE">JWT deny-list (jti) · presence cache</text>
+  <text x="1380" y="914" text-anchor="end" font-size="11" fill="#7C8496">SSE fan-out per family</text>
+
+  <!-- ============ FCM ============ -->
+  <rect x="1000" y="490" width="400" height="96" rx="16" fill="#1A1408" stroke="#5A4218"/>
+  <text x="1380" y="520" text-anchor="end" font-size="15" font-weight="800" fill="#FBD08A">🔔 FCM — فقط Push</text>
+  <text x="1380" y="544" text-anchor="end" font-size="11.5" fill="#FBD08A">Data-only messages · اولویت high برای SOS/Alerts</text>
+  <text x="1380" y="566" text-anchor="end" font-size="11.5" fill="#A7AEBE">پشت interface PushProvider ⇒ قابل تعویض/حذف</text>
+
+  <!-- ============ ARROWS ============ -->
+  <!-- Parent -> Backend -->
+  <path d="M330,370 L330,430 L600,430 L600,470" fill="none" stroke="#5B7CFA" stroke-width="2" marker-end="url(#arb)"/>
+  <rect x="345" y="410" width="240" height="20" rx="6" fill="#0B0D12"/>
+  <text x="580" y="425" text-anchor="end" font-size="11.5" font-weight="700" fill="#8FA3FF">HTTPS · REST /v1 · Bearer JWT</text>
+
+  <!-- Backend -> Parent (SSE) -->
+  <path d="M680,470 L680,452 L392,452 L392,370" fill="none" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+  <text x="672" y="447" text-anchor="end" font-size="11.5" font-weight="700" fill="#A5DCFA">SSE /v1/events — device.online · battery.updated</text>
+
+  <!-- Child -> Backend -->
+  <path d="M1110,370 L1110,430 L840,430 L840,470" fill="none" stroke="#2DD4A7" stroke-width="2" marker-end="url(#arg)"/>
+  <rect x="855" y="410" width="240" height="20" rx="6" fill="#0B0D12"/>
+  <text x="1095" y="425" text-anchor="end" font-size="11.5" font-weight="700" fill="#9BE9D2">heartbeat 60s · sync · HMAC + nonce</text>
+
+  <!-- Backend -> Child (SSE/commands) -->
+  <path d="M760,470 L760,452 L1048,452 L1048,370" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#aro)"/>
+  <text x="1040" y="447" text-anchor="end" font-size="11.5" font-weight="700" fill="#FBD08A">SSE commands · settings.updated · device.unpair</text>
+
+  <!-- Backend <-> Postgres -->
+  <path d="M600,770 L600,795 L250,795 L250,820" fill="none" stroke="#7C8496" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M310,820 L310,800 L660,800 L660,770" fill="none" stroke="#7C8496" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="430" y="790" text-anchor="middle" font-size="11" fill="#A7AEBE">Exposed ORM · prepared statements</text>
+
+  <!-- Backend <-> Redis -->
+  <path d="M840,770 L840,795 L1190,795 L1190,820" fill="none" stroke="#7C8496" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M1130,820 L1130,800 L780,800 L780,770" fill="none" stroke="#7C8496" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="1010" y="790" text-anchor="middle" font-size="11" fill="#A7AEBE">rate limit · nonce · cache</text>
+
+  <!-- Backend -> FCM -->
+  <path d="M930,530 L1000,530" fill="none" stroke="#F59E0B" stroke-width="2" marker-end="url(#aro)"/>
+  <text x="965" y="522" text-anchor="middle" font-size="10.5" fill="#FBD08A">outbox</text>
+
+  <!-- FCM -> Parent (push) -->
+  <path d="M1000,562 C700,610 300,470 240,374" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+  <text x="560" y="600" text-anchor="middle" font-size="11" fill="#FBA9A9">Push: pairing.completed · device.offline · alerts (P7)</text>
+
+  <!-- FCM -> Child (wake) -->
+  <path d="M1210,490 L1210,374" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+  <text x="1222" y="440" text-anchor="start" font-size="10.5" fill="#FBA9A9">wake</text>
+
+  <!-- legend -->
+  <rect x="40" y="490" width="400" height="180" rx="16" fill="#0E1117" stroke="#272C38"/>
+  <text x="420" y="518" text-anchor="end" font-size="14" font-weight="800" fill="#E6E9EF">راهنما و قواعد کلیدی</text>
+  <text x="420" y="544" text-anchor="end" font-size="11.5" fill="#A7AEBE">— خط توپر: درخواست کلاینت (uplink) · خط‌چین: رویداد سرور (downlink)</text>
+  <text x="420" y="566" text-anchor="end" font-size="11.5" fill="#A7AEBE">— همه داده‌ها فقط روی TLS 1.2+ (در release با Certificate Pinning)</text>
+  <text x="420" y="588" text-anchor="end" font-size="11.5" fill="#A7AEBE">— BackendGateway ⇒ REST امروز، Firebase فردا، بدون تغییر Domain/UI</text>
+  <text x="420" y="610" text-anchor="end" font-size="11.5" fill="#A7AEBE">— Outbox ⇒ هیچ رویداد/داده‌ای گم نمی‌شود (at-least-once + dedupe)</text>
+  <text x="420" y="632" text-anchor="end" font-size="11.5" fill="#A7AEBE">— زمان سرور = منبع حقیقت (تغییر ساعت گوشی بی‌اثر است)</text>
+  <text x="420" y="654" text-anchor="end" font-size="11.5" fill="#8FE3AC">— هر خانواده فقط داده خودش را می‌بیند (RLS در دیتابیس)</text>
+</svg>

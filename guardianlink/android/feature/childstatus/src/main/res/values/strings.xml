@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="child_home_title">وضعیت اتصال</string>
+    <string name="child_family">خانواده: %1$s</string>
+    <string name="child_device">دستگاه: %1$s</string>
+    <string name="child_last_sync">آخرین همگام‌سازی: %1$s</string>
+    <string name="child_never">هنوز انجام نشده</string>
+    <string name="child_zero_notif">این اپ هیچ اعلانی (notification) نمی‌سازد؛ گزارش‌ها بی‌صدا در پس‌زمینه ارسال می‌شوند.</string>
+    <string name="child_sync_now">همگام‌سازی اکنون</string>
+    <string name="child_battery">باتری</string>
+    <string name="child_app_version">نسخه اپ</string>
+    <string name="child_disconnected_title">اتصال قطع شده است</string>
+    <string name="child_disconnected_text">اتصال این دستگاه توسط والد قطع شده است. برای اتصال دوباره با والد خود صحبت کنید.</string>
+    <string name="child_usage_access">دسترسی مصرف (Usage Access)</string>
+    <string name="child_usage_on">🟢 فعال</string>
+    <string name="child_usage_off">🔴 غیرفعال</string>
+    <string name="child_usage_text">برای گزارش زمان صفحه و مدیریت اپ‌ها، دسترسی Usage Access رسمی اندروید لازم است و باید آن را خودتان در تنظیمات فعال کنید. این قابلیت فقط آمار استفاده و اطلاعات پایهٔ اپ‌های نصب‌شده (مانند نام و نسخه) را می‌فرستد؛ محتوای اپ‌ها در داده‌های گزارش‌شده نیست. فهرست اپ‌ها ممکن است به‌دلیل محدودیت‌های Android یا مجوزهای توزیع کامل نباشد. در حالت عادی، محدودیت‌ها فقط گزارش و هشدار هستند و اپ‌ها مسدود نمی‌شوند.</string>
+    <string name="child_app_rules_title">وضعیت قوانین اپ‌ها</string>
+    <string name="child_app_mode_normal">حالت عادی Android: محدودیت‌ها فقط گزارش/هشدار هستند و اپ‌ها مسدود نمی‌شوند. مسدودسازی فقط روی دستگاهی که واقعاً با Android Enterprise به‌عنوان Device Owner راه‌اندازی شده باشد ممکن است.</string>
+    <string name="child_app_mode_managed">حالت مدیریت‌شده و Device Owner شناسایی شد. قوانین محدودسازی از API رسمی Android استفاده می‌کنند؛ ممکن است Android برای بعضی اپ‌های ضروری اعمال محدودیت را رد کند.</string>
+    <string name="child_app_cached_rules">قوانین ذخیره‌شدهٔ رمزگذاری‌شده</string>
+    <string name="child_app_last_sync">آخرین دریافت قوانین</string>
+    <string name="child_app_schedule_delay">زمان‌بندی محلی با WorkManager و محدودیت‌های سیستم انجام می‌شود؛ اجرای دقیق یا بلادرنگ تضمین نیست.</string>
+    <string name="child_usage_open">باز کردن تنظیمات رسمی</string>
+    <string name="child_sos_button">درخواست کمک SOS</string>
+    <string name="child_web_title">ایمنی وب</string>
+    <string name="child_web_managed_status">وضعیت Chrome مدیریت‌شده</string>
+    <string name="child_web_scope">قواعد دامنه فقط در Chrome روی دستگاه/پروفایل مدیریت‌شده قابل اعمال‌اند؛ این قابلیت اینترنت یا برنامه‌های دیگر را فیلتر نمی‌کند. سابقهٔ مرور یا تلاش‌های بازدید جمع‌آوری نمی‌شود.</string>
+    <string name="child_web_status_disabled">خاموش</string>
+    <string name="child_web_status_unsupported">قابل اعمال نیست</string>
+    <string name="child_web_status_unverified">تنظیم Chrome ارسال و بازخوانی شد؛ اثر نهایی تأییدنشده</string>
+    <string name="child_web_status_limited">محدود</string>
+    <string name="child_web_status_error">خطا در تنظیم</string>
+    <string name="child_web_status_unknown">نامشخص</string>
+    <string name="child_web_reason_disabled">والد ایمنی وب را خاموش کرده است.</string>
+    <string name="child_web_reason_managed_required">اعمال این سیاست به مدیریت رسمی دستگاه/پروفایل نیاز دارد.</string>
+    <string name="child_web_reason_chrome_missing">Chrome در دستگاه نصب نیست.</string>
+    <string name="child_web_reason_readback_mismatch">سیاست پس از تنظیم از Android قابل بازخوانی نبود.</string>
+    <string name="child_web_reason_effect_unverified">Android تنظیمات Chrome را بازخوانی کرد، اما اعمال واقعی داخل Chrome قابل تأیید برنامه نیست.</string>
+    <string name="child_web_reason_category_unavailable">قواعد دسته‌بندی ذخیره شده‌اند، اما طبقه‌بندی‌گر وب پیکربندی نشده است و این قواعد اعمال نمی‌شوند.</string>
+    <string name="child_web_reason_vpn_unavailable">فیلتر VPN در این نسخه پیاده‌سازی نشده است.</string>
+    <string name="child_web_reason_dns_unavailable">فیلتر DNS و سرویس‌دهندهٔ طبقه‌بندی در این نسخه پیکربندی نشده‌اند.</string>
+    <string name="child_web_reason_policy_rejected">Android درخواست سیاست مدیریت‌شده را رد کرد.</string>
+    <string name="child_web_reason_default">فقط وضعیت و پیکربندی قواعد گزارش می‌شود؛ نه سابقهٔ مرور وب.</string>
+</resources>

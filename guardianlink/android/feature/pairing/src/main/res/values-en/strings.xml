@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_title">Connect child device</string>
+    <string name="pair_subtitle">Give this code only to your child. The code is one-time and expires; create a new one after expiry.</string>
+    <string name="pair_expires">Expires in: %1$s:%2$s minutes</string>
+    <string name="pair_onetime">After use, this code is permanently invalidated.</string>
+    <string name="pair_new">Create new code</string>
+    <string name="pair_done">Back</string>
+    <string name="qr_desc">QR code pairing</string>
+    <string name="loading">Loading…</string>
+    <string name="setup_title">Connect to Parent</string>
+    <string name="setup_text">Enter the pairing code provided by your parent.</string>
+    <string name="setup_field">Pairing Code</string>
+    <string name="setup_connect">Connect</string>
+    <string name="setup_code_bad">Code must be 8 characters.</string>
+    <string name="confirm_title">Confirm connection</string>
+    <string name="confirm_family">Family: %1$s</string>
+    <string name="confirm_parent">Parent: %1$s</string>
+    <string name="confirm_device_name">This device name</string>
+    <string name="confirm_notice">This device will be linked to your family after you confirm. Your parent will be able to see only the device information and capabilities described in the app.</string>
+    <string name="confirm_btn">Confirm and connect</string>
+</resources>

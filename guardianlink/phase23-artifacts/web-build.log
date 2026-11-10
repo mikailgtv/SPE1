@@ -1,0 +1,13 @@
+
+> guardianlink-parent-web@0.1.0 build
+> tsc -b && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 90 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.71 kB │ gzip:   0.46 kB
+dist/assets/index-BOPj9NrJ.css   35.46 kB │ gzip:   7.61 kB
+dist/assets/index-DeGaKeYn.js   385.93 kB │ gzip: 118.12 kB
+✓ built in 1.94s

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="presence_online">Online</string>
+    <string name="presence_offline">Offline</string>
+    <string name="presence_warning">Warning</string>
+    <string name="err_network">Network error; check the connection.</string>
+    <string name="err_auth">Invalid email or password.</string>
+    <string name="err_session">Your session expired; sign in again.</string>
+    <string name="err_server">Server error; try again.</string>
+    <string name="err_pairing_invalid">Pairing code is not valid.</string>
+    <string name="err_pairing_expired">Pairing code expired.</string>
+    <string name="err_pairing_used">This code was already used.</string>
+    <string name="err_device_connected">This device is already connected to a family.</string>
+    <string name="err_device_removed">Device was removed by the parent.</string>
+    <string name="err_rate">Too many attempts; wait a moment.</string>
+    <string name="err_permission">Access denied.</string>
+    <string name="health_healthy">Healthy</string>
+    <string name="health_delayed">Delayed</string>
+    <string name="health_offline">Offline</string>
+    <string name="health_unknown">Waiting for first sync</string>
+</resources>

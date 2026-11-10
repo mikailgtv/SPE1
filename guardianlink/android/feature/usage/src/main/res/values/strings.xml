@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">در حال بارگذاری…</string>
+    <string name="back">بازگشت</string>
+    <string name="cancel">انصراف</string>
+
+    <string name="st_card_title">زمان صفحه</string>
+    <string name="st_today_usage">مصرف امروز</string>
+    <string name="st_limit">سقف روزانه: %1$s</string>
+    <string name="st_remaining">باقی‌مانده: %1$s</string>
+    <string name="st_usage_access_off">دسترسی مصرف: غیرفعال</string>
+    <string name="st_open">جزئیات زمان صفحه</string>
+    <string name="st_title">زمان صفحه</string>
+    <string name="st_today">امروز</string>
+    <string name="st_top_apps">پرمصرف‌ترین اپ‌ها</string>
+    <string name="st_week">هفته</string>
+    <string name="st_week_total">مجموع هفته: %1$s</string>
+    <string name="st_week_avg">میانگین روزانه: %1$s</string>
+    <string name="st_most_day">پرمصرف‌ترین روز: %1$s</string>
+    <string name="st_least_day">کم‌مصرف‌ترین روز: %1$s</string>
+    <string name="st_daily_limit">سقف روزانه</string>
+    <string name="st_limit_value">%1$s در روز</string>
+    <string name="st_limit_off">سقف روزانه غیرفعال است</string>
+    <string name="st_schedules">برنامه‌های زمانی</string>
+    <string name="st_no_schedules">برنامه‌ی زمانی تعریف نشده است.</string>
+    <string name="st_advisory_note">این برنامه‌ها فقط اطلاع‌رسانی دارند؛ در این نسخه هیچ اپی مسدود نمی‌شود.</string>
+    <string name="st_open_apps">مصرف اپ‌ها</string>
+    <string name="st_open_reports">گزارش‌ها</string>
+    <string name="st_open_settings">تنظیمات زمان صفحه</string>
+    <string name="st_state_under">زیر سقف</string>
+    <string name="st_state_near">نزدیک سقف</string>
+    <string name="st_state_reached">سقف پر شده</string>
+
+    <string name="au_title">مصرف اپ‌ها</string>
+    <string name="au_total">مجموع امروز: %1$s</string>
+    <string name="sort_most">بیشترین مصرف</string>
+    <string name="sort_least">کمترین مصرف</string>
+    <string name="sort_alpha">الفبایی</string>
+    <string name="au_empty">داده‌ای برای نمایش نیست. ابتدا در اپ فرزند «دسترسی مصرف» را فعال کنید.</string>
+
+    <string name="ad_title">جزئیات اپ</string>
+    <string name="ad_today">امروز</string>
+    <string name="ad_today_launches">باز شدن (امروز)</string>
+    <string name="ad_week">مجموع هفته</string>
+    <string name="ad_week_launches">باز شدن (هفته)</string>
+    <string name="ad_last_used">آخرین استفاده</string>
+    <string name="ad_trend">روند هفتگی</string>
+
+    <string name="cat_game">بازی</string>
+    <string name="cat_audio">صوت</string>
+    <string name="cat_video">ویدیو</string>
+    <string name="cat_image">تصویر</string>
+    <string name="cat_social">اجتماعی</string>
+    <string name="cat_news">خبری</string>
+    <string name="cat_maps">نقشه</string>
+    <string name="cat_productivity">بهره‌وری</string>
+    <string name="cat_accessibility">دسترس‌پذیری</string>
+    <string name="cat_undefined">دسته‌بندی نشده</string>
+
+    <string name="rp_title">گزارش‌ها</string>
+    <string name="rp_daily">گزارش روزانه %1$s</string>
+    <string name="rp_total">مجموع مصرف</string>
+    <string name="rp_most_used">پرمصرف‌ترین اپ</string>
+    <string name="rp_apps_used">تعداد اپ‌های استفاده‌شده</string>
+    <string name="rp_sessions">تعداد دفعات باز شدن</string>
+    <string name="rp_categories">دسته‌بندی‌ها (از سیستم دستگاه)</string>
+    <string name="rp_weekly">گزارش هفتگی</string>
+    <string name="rp_week_total">مجموع هفته</string>
+    <string name="rp_week_avg">میانگین روزانه</string>
+    <string name="rp_most_day">پرمصرف‌ترین روز</string>
+    <string name="rp_least_day">کم‌مصرف‌ترین روز</string>
+
+    <string name="set_title">تنظیمات زمان صفحه</string>
+    <string name="set_limit_block">سقف مصرف روزانه</string>
+    <string name="set_limit_minutes">سقف روزانه (دقیقه)</string>
+    <string name="set_near_pct">آستانه‌ی هشدار «نزدیک سقف» (٪)</string>
+    <string name="set_limit_enabled">فعال</string>
+    <string name="set_save_limit">ذخیره</string>
+    <string name="set_saved">ذخیره شد ✓</string>
+    <string name="set_monitoring_note">رسیدن به سقف فقط هشدار برای والد می‌سازد؛ گوشی فرزند قفل یا مسدود نمی‌شود.</string>
+    <string name="set_schedules">برنامه‌های زمانی</string>
+    <string name="set_add_schedule">افزودن</string>
+    <string name="set_edit">ویرایش</string>
+    <string name="set_sched_name">نام (مثلاً روزهای مدرسه)</string>
+    <string name="set_sched_start">شروع (HH:MM)</string>
+    <string name="set_sched_end">پایان (HH:MM)</string>
+    <string name="set_sched_days">روزهای هفته</string>
+    <string name="set_bad_time">زمان باید HH:MM معتبر باشد</string>
+    <string name="set_overnight_hint">بازه‌ی شبانه مجاز است (مثلاً ۲۲:۳۰ تا ۰۷:۰۰).</string>
+</resources>

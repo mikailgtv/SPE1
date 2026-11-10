@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ماژول Location (Phase 4) — فقط monitoring.
+  مجوزهای runtime (ACCESS_FINE/COARSE/BACKGROUND_LOCATION) در manifest اپ کودک
+  و از طریق جریان رسمی اندروید گرفته می‌شوند؛ هیچ دور زدنی وجود ندارد.
+  بدون Foreground Service ⇒ هیچ notification اجباری سیستمی ساخته نمی‌شود
+  (سیاست پروژه: اپ کودک صفر notification).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" />

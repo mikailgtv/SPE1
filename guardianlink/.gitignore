@@ -1,0 +1,29 @@
+# Local environment/secrets
+.env
+deploy/.env
+**/*.jks
+**/*.keystore
+**/*.p12
+**/secrets/**
+
+# Web generated data / local config
+web/node_modules/
+web/dist/
+web/.env
+web/.vite/
+
+# Gradle/Android generated data
+.gradle/
+**/.gradle/
+**/build/
+**/local.properties
+
+# Local runtime data and backups
+server/data/
+deploy/backups/
+*.dump
+*.dump.age
+
+# IDE and OS files
+.idea/
+.DS_Store

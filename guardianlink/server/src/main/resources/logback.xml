@@ -1,0 +1,21 @@
+<configuration>
+    <!-- Structured JSON for operator collection. Explicit providers intentionally omit stack traces and exception messages. -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <logLevel/>
+                <loggerName/>
+                <threadName/>
+                <message/>
+                <logstashMarkers/>
+                <pattern>
+                    <pattern>{"service":"guardianlink-backend","environment":"${APP_ENV:-unknown}"}</pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+    <root level="${LOG_LEVEL:-INFO}">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
